@@ -1,5 +1,6 @@
 package com.example.demo.controladores;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +9,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.codingdojo.sofia.controladores.Usuario;
-import com.codingdojo.sofia.controladores.Valid;
+import com.example.demo.servicios.Servicios;
+import com.example.modelos.Usuario;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 public class ControladorUsuarios {
 
+	@Autowired
+	private Servicios servicio;
+	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
 		return "index.jsp";
@@ -35,9 +40,9 @@ public class ControladorUsuarios {
 	}
 	
 	@PostMapping("/login") 
-	public String login(@RequestParam("email") String email, @RequestParam("password") String password, RedirectAttributes redirectAttributes, HttpSession session) {
+	public String login(@RequestParam("email") String email, @RequestParam("contrasena") String contrasena, RedirectAttributes redirectAttributes, HttpSession session) {
 		
-		Usuario usuarioInicioSesion = servicio.login(email, password); 
+		Usuario usuarioInicioSesion = servicio.login(email, contrasena); 
 		
 		if(usuarioInicioSesion == null) {
 			redirectAttributes.addFlashAttribute("error_login", "El correo/password es incorrecto");
