@@ -1,5 +1,6 @@
 package com.example.modelos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -55,8 +56,6 @@ public class Usuario {
 	
 	private String descripcion;
 	
-	//pendiente: medallas (nuevo modelo?) (List<Integer>?)
-	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -66,6 +65,10 @@ public class Usuario {
 //Joins
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
 	private List<Direccion> direcciones;
+	
+   //Relación One-to-Many con medalla (nuevo modelo) (List<Integer>)
+	@OneToMany(fetch=FetchType.LAZY, mappedBy= "usuario")
+	private List<Medalla> medallas = new ArrayList<>();
 	
 //constructor
 	public Usuario() {}
@@ -141,7 +144,23 @@ public class Usuario {
 		this.updatedAt = updatedAt;
 	}
 
-//methods
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+
+	public List<Medalla> getMedallas() {
+		return medallas;
+	}
+
+	public void setMedallas(List<Medalla> medallas) {
+		this.medallas = medallas;
+	}
+
+	//methods
 	@PrePersist
   	protected void onCreate() {
   	    this.createdAt = new Date();
