@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.modelos.Usuario;
+import com.example.demo.modelos.Usuario;
 
 
 @Repository

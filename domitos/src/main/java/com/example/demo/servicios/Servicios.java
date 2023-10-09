@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.example.demo.modelos.Usuario;
 import com.example.demo.repositorios.RepositorioUsuarios;
-import com.example.modelos.Usuario;
 
 @Service
 public class Servicios {

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.modelos.Usuario;
 import com.example.demo.servicios.Servicios;
-import com.example.modelos.Usuario;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
