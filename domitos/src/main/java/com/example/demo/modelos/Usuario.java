@@ -43,12 +43,12 @@ public class Usuario {
 	private String email;
 	
 	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=6, max=50, message="La contraseña requiere entre 6 y 50 caracteres")
+	@Size(min=6, message="La contraseña requiere al menos 6 caracteres")
 	private String contrasena;
 	
 	@Transient
 	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=6, max=50, message="La contraseña requiere entre 6 y 50 caracteres")
+	@Size(min=6, message="La contraseña requiere al menos 6 caracteres")
 	private String confirmacion;
 	
 	@NotNull
