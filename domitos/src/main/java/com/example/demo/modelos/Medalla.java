@@ -1,6 +1,7 @@
 package com.example.demo.modelos;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,12 +12,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="medallas")
@@ -24,26 +24,11 @@ public class Medalla {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String titulo;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
+	private Long id;
+	private String titulo;
 	private String color;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String tipo;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String tiempo;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
+
+	private String tipo;
 	private String descripcion;
 	
 	@Column(updatable=false)
@@ -54,21 +39,20 @@ public class Medalla {
 	private Date updatedAt;
 	
 //Joins
-	
-	//usuario
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="medallas_de_usuarios",
+			   joinColumns=@JoinColumn(name="medalla_id"),
+			   inverseJoinColumns=@JoinColumn(name="usuario_id"))
+	private List<Usuario> usuariosConMedalla;
 
-	//constructor
+//constructor
 	public Medalla() {
 	}
 
-	//getters n setters
+//getters n setters
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -76,7 +60,6 @@ public class Medalla {
 	public String getTitulo() {
 		return titulo;
 	}
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
@@ -84,7 +67,6 @@ public class Medalla {
 	public String getColor() {
 		return color;
 	}
-
 	public void setColor(String color) {
 		this.color = color;
 	}
@@ -92,23 +74,13 @@ public class Medalla {
 	public String getTipo() {
 		return tipo;
 	}
-
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-
-	public String getTiempo() {
-		return tiempo;
-	}
-
-	public void setTiempo(String tiempo) {
-		this.tiempo = tiempo;
 	}
 
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
@@ -116,7 +88,6 @@ public class Medalla {
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -124,12 +95,11 @@ public class Medalla {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	
-	//methods
+//methods
 	@PrePersist
   	protected void onCreate() {
   	    this.createdAt = new Date();
