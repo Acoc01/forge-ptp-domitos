@@ -1,0 +1,73 @@
+@charset "UTF-8";
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h2 {
+    margin: 0;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.tramites {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+/* Estilos para el menú */
+.menu {
+    width: 20%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.menu a {
+    display: block;
+    margin-bottom: 5px;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #333;
+}
+
+.menu a:hover {
+    background-color: #ddd;
+}
+
+/* Estilos para el contenido detallado */
+.contenido {
+    width: 80%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estilos para el el pie de pagina */
+footer {
+    background-color: #f8f8f8;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    margin: 0 10px;
+    text-decoration: none;
+}
