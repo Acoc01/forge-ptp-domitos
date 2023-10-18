@@ -27,7 +27,9 @@ public class ControladorUsuarios {
 	}
 	
 	@PostMapping("/registro")
-	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario, BindingResult result, HttpSession session) {
+	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
+						   BindingResult result,
+						   HttpSession session) {
 		
 		servicio.registrar(nuevoUsuario, result);
 
@@ -40,12 +42,15 @@ public class ControladorUsuarios {
 	}
 	
 	@PostMapping("/login") 
-	public String login(@RequestParam("email") String email, @RequestParam("contrasena") String contrasena, RedirectAttributes redirectAttributes, HttpSession session) {
+	public String login(@RequestParam("email") String email,
+						@RequestParam("contrasena") String contrasena,
+						RedirectAttributes redirectAttributes,
+						HttpSession session) {
 		
 		Usuario usuarioInicioSesion = servicio.login(email, contrasena); 
 		
 		if(usuarioInicioSesion == null) {
-			redirectAttributes.addFlashAttribute("error_login", "El correo/password es incorrecto");
+			redirectAttributes.addFlashAttribute("error_login", "La información de Inicio de Sesión no es correcta");
 			return "redirect:/";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuarioInicioSesion);
@@ -57,5 +62,10 @@ public class ControladorUsuarios {
 	public String logout(HttpSession session){
 		session.removeAttribute("usuarioEnSesion");
 		return "redirect:/";
+	}
+	
+	@GetMapping("/dashboard")
+	public String temporal() {
+		return "temp.jsp";
 	}
 }

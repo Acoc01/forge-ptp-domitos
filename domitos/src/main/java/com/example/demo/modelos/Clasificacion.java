@@ -1,6 +1,5 @@
 package com.example.demo.modelos;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,14 +11,10 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="clasificaciones")
@@ -29,25 +24,7 @@ public class Clasificacion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String viaje;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String compra;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String tramite;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String evento;
-	
-	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=2, max=50, message="Este campo debe tener entre 2 y 50 caracteres")
-	private String otros;
+	private String nombre;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -57,13 +34,8 @@ public class Clasificacion {
 	private Date updatedAt;
 	
 //Joins
-	
-	// Relación Many-to-Many con Anuncio 
-	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "clasificaciones_anuncios", 
-               joinColumns = @JoinColumn(name = "clasificacion_id"), 
-               inverseJoinColumns = @JoinColumn(name = "anuncio_id"))
-    private List<Anuncio> anuncios = new ArrayList<>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="clasificacion")
+    private List<Anuncio> anuncios;
 
 //constructor
 	public Clasificacion() {
@@ -73,55 +45,27 @@ public class Clasificacion {
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getViaje() {
-		return viaje;
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public void setViaje(String viaje) {
-		this.viaje = viaje;
+	public List<Anuncio> getAnuncios() {
+		return anuncios;
 	}
-
-	public String getCompra() {
-		return compra;
-	}
-
-	public void setCompra(String compra) {
-		this.compra = compra;
-	}
-
-	public String getTramite() {
-		return tramite;
-	}
-
-	public void setTramite(String tramite) {
-		this.tramite = tramite;
-	}
-
-	public String getEvento() {
-		return evento;
-	}
-
-	public void setEvento(String evento) {
-		this.evento = evento;
-	}
-
-	public String getOtros() {
-		return otros;
-	}
-
-	public void setOtros(String otros) {
-		this.otros = otros;
+	public void setAnuncios(List<Anuncio> anuncios) {
+		this.anuncios = anuncios;
 	}
 
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
@@ -129,7 +73,6 @@ public class Clasificacion {
 	public Date getUpdatedAt() {
 		return updatedAt;
 	}
-
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
@@ -143,7 +86,4 @@ public class Clasificacion {
  	protected void onUpdate() {
  	    this.updatedAt = new Date();
  	}
-	
-	
-	
 }

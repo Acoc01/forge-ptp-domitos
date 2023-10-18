@@ -1,6 +1,5 @@
 package com.example.demo.modelos;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +11,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -43,16 +45,20 @@ public class Usuario {
 	private String email;
 	
 	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=6, max=50, message="La contraseña requiere entre 6 y 50 caracteres")
+	@Size(min=6, message="La contraseña requiere al menos 6 caracteres")
 	private String contrasena;
 	
 	@Transient
 	@NotEmpty(message="Este campo es obligatorio")
-	@Size(min=6, max=50, message="La contraseña requiere entre 6 y 50 caracteres")
+	@Size(min=6, message="La contraseña requiere al menos 6 caracteres")
 	private String confirmacion;
 	
 	@NotNull
 	private Boolean domo;
+	
+	private Integer cuentaBancaria;
+	
+	private Integer rut;
 	
 	private String descripcion;
 	
@@ -66,9 +72,20 @@ public class Usuario {
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
 	private List<Direccion> direcciones;
 	
-   //Relación One-to-Many con medalla (nuevo modelo) (List<Integer>)
-	@OneToMany(fetch=FetchType.LAZY, mappedBy= "usuario")
-	private List<Medalla> medallas = new ArrayList<>();
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="creador")
+	private List<Anuncio> anunciosCreados;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="medallas_de_usuarios",
+			   joinColumns=@JoinColumn(name="usuario_id"),
+			   inverseJoinColumns=@JoinColumn(name="medalla_id"))
+	private List<Medalla> medallas;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="postulaciones",
+			   joinColumns=@JoinColumn(name="domo_id"),
+			   inverseJoinColumns=@JoinColumn(name="anuncio_id"))
+	private List<Anuncio> listaAnuncios;
 	
 //constructor
 	public Usuario() {}
@@ -144,23 +161,49 @@ public class Usuario {
 		this.updatedAt = updatedAt;
 	}
 
+	public Integer getCuentaBancaria() {
+		return cuentaBancaria;
+	}
+	public void setCuentaBancaria(Integer cuentaBancaria) {
+		this.cuentaBancaria = cuentaBancaria;
+	}
+
+	public Integer getRut() {
+		return rut;
+	}
+	public void setRut(Integer rut) {
+		this.rut = rut;
+	}
+
 	public List<Direccion> getDirecciones() {
 		return direcciones;
 	}
-
 	public void setDirecciones(List<Direccion> direcciones) {
 		this.direcciones = direcciones;
+	}
+
+	public List<Anuncio> getAnunciosCreados() {
+		return anunciosCreados;
+	}
+	public void setAnunciosCreados(List<Anuncio> anunciosCreados) {
+		this.anunciosCreados = anunciosCreados;
 	}
 
 	public List<Medalla> getMedallas() {
 		return medallas;
 	}
-
 	public void setMedallas(List<Medalla> medallas) {
 		this.medallas = medallas;
 	}
 
-	//methods
+	public List<Anuncio> getListaAnuncios() {
+		return listaAnuncios;
+	}
+	public void setListaAnuncios(List<Anuncio> listaAnuncios) {
+		this.listaAnuncios = listaAnuncios;
+	}
+
+//methods
 	@PrePersist
   	protected void onCreate() {
   	    this.createdAt = new Date();

@@ -1,6 +1,5 @@
 package com.example.demo.modelos;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +14,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -40,8 +41,6 @@ public class Anuncio {
 	@Future(message="Debe ser una fecha futura")
 	private Date fechaLimite;
 	
-//(pendiente)LISTO: private String clasificacion; //viajes, compras, tramites, eventos 
-	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -49,13 +48,23 @@ public class Anuncio {
 	private Date updatedAt;
 	
 //Joins
+	@OneToOne(fetch=FetchType.LAZY) //pendiente: preguntarle a la profe CASCADE TYPE ????????????????????????????????????????????????????
+	@JoinColumn(name="direccion_id")
+	private Direccion direccion;
 	
-	// Relación Many-to-Many con Clasificación
-	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "anuncios_clasificaciones", 
-               joinColumns = @JoinColumn(name = "anuncio_id"), 
-               inverseJoinColumns = @JoinColumn(name = "clasificacion_id"))
-    private List<Clasificacion> clasificaciones = new ArrayList<>();
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="clasificacion_id")
+	private Clasificacion clasificacion;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="creador_id")
+	private Usuario creador;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="postulaciones",
+			   joinColumns=@JoinColumn(name="anuncio_id"),
+			   inverseJoinColumns=@JoinColumn(name="domo_id"))
+	private List<Usuario> listaDomos;
 
 //constructor
 	public Anuncio() {}
@@ -103,7 +112,35 @@ public class Anuncio {
 		this.fechaLimite = fechaLimite;
 	}
 
-//methods
+	public Direccion getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public Clasificacion getClasificacion() {
+		return clasificacion;
+	}
+	public void setClasificacion(Clasificacion clasificacion) {
+		this.clasificacion = clasificacion;
+	}
+
+	public Usuario getCreador() {
+		return creador;
+	}
+	public void setCreador(Usuario creador) {
+		this.creador = creador;
+	}
+
+	public List<Usuario> getListaDomos() {
+		return listaDomos;
+	}
+	public void setListaDomos(List<Usuario> listaDomos) {
+		this.listaDomos = listaDomos;
+	}
+
+	//methods
 	@PrePersist
   	protected void onCreate() {
   	    this.createdAt = new Date();
