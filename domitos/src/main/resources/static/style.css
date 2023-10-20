@@ -1,73 +1,48 @@
 @charset "UTF-8";
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-header h2 {
-    margin: 0;
-}
-
-header nav a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 10px;
-}
-
-.tramites {
+body {
+    font-family: Arial, sans-serif;
     text-align: center;
+    margin: 50px;
 }
 
-.container {
-    display: flex;
-    width: 100%;
-}
-
-/* Estilos para el menú */
-.menu {
-    width: 20%;
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
     border: 1px solid #ccc;
-    padding: 10px;
-    box-sizing: border-box;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.menu a {
+label, input, select, textarea {
     display: block;
-    margin-bottom: 5px;
-    text-decoration: none;
-    padding: 5px;
-    background-color: #f0f0f0;
+    margin-bottom: 10px;
+}
+
+input, select, textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 3px;
-    color: #333;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.menu a:hover {
-    background-color: #ddd;
+textarea {
+    height: 100px;
 }
 
-/* Estilos para el contenido detallado */
-.contenido {
-    width: 80%;
-    padding: 20px;
-    box-sizing: border-box;
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-/* Estilos para el el pie de pagina */
-footer {
-    background-color: #f8f8f8;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer a {
-    margin: 0 10px;
-    text-decoration: none;
+input[type="submit"]:hover {
+    background-color: #0056b3;
 }

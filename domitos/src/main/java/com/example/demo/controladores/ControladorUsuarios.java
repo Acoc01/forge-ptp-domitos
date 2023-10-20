@@ -66,6 +66,6 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/dashboard")
 	public String temporal() {
-		return "servicio.jsp";
+		return "servdomo.jsp";
 	}
 }
