@@ -87,6 +87,9 @@ public class Usuario {
 			   inverseJoinColumns=@JoinColumn(name="anuncio_id"))
 	private List<Anuncio> listaAnuncios;
 	
+	@Column(name="reset_password_token")
+	private String resetPasswordToken;
+	
 //constructor
 	public Usuario() {}
 	
@@ -187,6 +190,14 @@ public class Usuario {
 	}
 	public void setAnunciosCreados(List<Anuncio> anunciosCreados) {
 		this.anunciosCreados = anunciosCreados;
+	}
+
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	public List<Medalla> getMedallas() {

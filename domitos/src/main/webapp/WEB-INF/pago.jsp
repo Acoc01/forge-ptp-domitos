@@ -30,7 +30,7 @@
                                     <div class="product-details">
                                         <div class="row justify-content-md-center">
                                             <div class="col-md-3">
-                                                <img class="img-fluid mx-auto d-block image" th:src="@{/img/product.png}">
+                                                <img class="img-fluid mx-auto d-block image" src="@{/img/product.png}">
                                             </div>
                                             <div class="col-md-4 product-detail">
                                                 <h5>Product</h5>
@@ -172,7 +172,7 @@
     </section>
 </main>
 <footer>
-    <div class="footer_logo"><img id="horizontal_logo" th:src="@{/img/horizontal_logo.png}"></div>
+    <div class="footer_logo"><img id="horizontal_logo" src="@{/img/horizontal_logo.png}"></div>
     <div class="footer_text">
         <p>Developers Site:</p>
         <p><a href="https://www.mercadopago.com/developers">https://www.mercadopago.com/developers</a></p>

@@ -40,6 +40,8 @@ public class Servicios {
             //Encriptamos contraseña
             String contra_encriptada = BCrypt.hashpw(contrasena, BCrypt.gensalt());
             nuevoUsuario.setContrasena(contra_encriptada);
+            System.out.println(contrasena);
+            System.out.println(contra_encriptada);
             return repoUsuarios.save(nuevoUsuario);
         }
 
@@ -62,6 +64,31 @@ public class Servicios {
 
         return null;
 
+    }
+
+    public Usuario updateResetPasswordToken(String token, String email) {
+    	Usuario usuarioExiste = repoUsuarios.findByEmail(email);
+    	
+    	if(usuarioExiste == null) {
+    		return null;
+    	}
+    	
+    	usuarioExiste.setResetPasswordToken(token);
+    	usuarioExiste.setConfirmacion(email);
+    	repoUsuarios.save(usuarioExiste);
+    	return usuarioExiste;
+    }
+    
+    public Usuario getByResetPasswordToken(String token) {
+    	return repoUsuarios.findByResetPasswordToken(token);
+    }
+    
+    public Usuario updatePassword(Usuario user, String newPassword) {
+		String contra_encriptada = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+		user.setContrasena(contra_encriptada);
+		user.setConfirmacion(contra_encriptada);
+		repoUsuarios.save(user);
+		return user;
     }
 
 }

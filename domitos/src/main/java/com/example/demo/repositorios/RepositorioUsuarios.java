@@ -13,4 +13,5 @@ public interface RepositorioUsuarios extends CrudRepository<Usuario, Long> {
 	
 	List<Usuario> findAll();
 	Usuario findByEmail(String email);
+	Usuario findByResetPasswordToken(String token);
 }

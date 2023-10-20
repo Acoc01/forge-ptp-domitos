@@ -23,7 +23,7 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
-		return "index.jsp";
+		return "login.jsp";
 	}
 	
 	@PostMapping("/registro")
@@ -39,6 +39,20 @@ public class ControladorUsuarios {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
 			return "redirect:/dashboard";
 		}
+	}
+	@PostMapping("/registro/domo")
+	public String registroDomo(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
+							   BindingResult result,
+							   HttpSession session) {
+		servicio.registrar(nuevoUsuario, result);
+
+		if(result.hasErrors()) {
+			return "index.jsp";
+		} else {
+			session.setAttribute("usuarioEnSesion", nuevoUsuario);
+			return "redirect:/dashboard";
+		}
+		
 	}
 	
 	@PostMapping("/login") 
