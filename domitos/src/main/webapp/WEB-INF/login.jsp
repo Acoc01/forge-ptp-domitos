@@ -55,7 +55,7 @@
 					</div>
 					<div>
 						<label for="password" class="form-label">Password</label>
-						<input id="password" type="password" class="form-control" name="password" />
+						<input id="password" type="password" class="form-control" name="contrasena" />
 					</div>
 					<div class="d-flex justify-content-center">
 						<input type="submit" class="btn bg-light border border-2 btn-1 mt-3 mb-3" value="Inicia Sesión" />

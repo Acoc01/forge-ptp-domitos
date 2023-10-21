@@ -2,6 +2,7 @@ package com.example.demo.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -76,6 +77,16 @@ public class ControladorUsuarios {
 	public String logout(HttpSession session){
 		session.removeAttribute("usuarioEnSesion");
 		return "redirect:/";
+	}
+	
+	@GetMapping("/perfil")
+	public String perfil(HttpSession session, Model model) {
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
+		model.addAttribute("usuario",user);
+		return "perfil.jsp";
 	}
 	
 	@GetMapping("/dashboard")
