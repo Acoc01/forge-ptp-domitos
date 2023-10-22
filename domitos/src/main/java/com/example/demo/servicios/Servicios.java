@@ -19,7 +19,7 @@ public class Servicios {
 	}
 	
 	/* Método que me registre un nuevo usuario */
-    public Usuario registrar(Usuario nuevoUsuario, BindingResult result) {
+    public Usuario registrar(Usuario nuevoUsuario, BindingResult result, Boolean domo) {
         //Comparamos contraseñas
         String contrasena = nuevoUsuario.getContrasena();
         String confirmacion = nuevoUsuario.getConfirmacion();
@@ -46,6 +46,7 @@ public class Servicios {
             nuevoUsuario.setContrasena(contra_encriptada);
             System.out.println(contrasena);
             System.out.println(contra_encriptada);
+            nuevoUsuario.setDomo(domo);
             return repoUsuarios.save(nuevoUsuario);
         }
 

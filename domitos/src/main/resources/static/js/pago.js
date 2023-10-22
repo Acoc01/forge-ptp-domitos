@@ -177,16 +177,17 @@ document.getElementById('go-back').addEventListener('click', function(){
 
 // Handle price update
 function updatePrice(){
-    let quantity = document.getElementById('quantity').value;
+    //let quantity = document.getElementById('quantity').value;
     let unitPrice = document.getElementById('unit-price').innerText;
-    let amount = parseInt(unitPrice) * parseInt(quantity);
+    //let amount = parseInt(unitPrice) * parseInt(quantity);
+    let amount = parseInt(unitPrice);
 
     document.getElementById('cart-total').innerText = '$ ' + amount;
-    document.getElementById('summary-price').innerText = '$ ' + unitPrice;
-    document.getElementById('summary-quantity').innerText = quantity;
+    //document.getElementById('summary-price').innerText = '$ ' + unitPrice;
+    //document.getElementById('summary-quantity').innerText = quantity;
     document.getElementById('summary-total').innerText = '$ ' + amount;
     document.getElementById('amount').value = amount;
 };
 
-document.getElementById('quantity').addEventListener('change', updatePrice);
+//document.getElementById('quantity').addEventListener('change', updatePrice);
 updatePrice();

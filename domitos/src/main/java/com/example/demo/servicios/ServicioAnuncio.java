@@ -22,6 +22,14 @@ public class ServicioAnuncio {
 		return ra.findByClasificacion(clasificacion);
 	}
 	
+	public List<Anuncio> encontrarMisAnuncios(Long id){
+		return ra.findByCreadorId(id);
+	}
+	
+	public Anuncio encontrarAnuncioPorId(Long id) {
+		return ra.findById(id).orElse(null);
+	}
+	
 	
 	
 

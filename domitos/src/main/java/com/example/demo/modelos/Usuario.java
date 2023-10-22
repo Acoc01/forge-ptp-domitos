@@ -69,8 +69,8 @@ public class Usuario {
 	private Date updatedAt;
 	
 //Joins
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
-	private List<Direccion> direcciones;
+//	@OneToMany(fetch=FetchType.LAZY, mappedBy="usuario")
+//	private List<Direccion> direcciones;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="creador")
 	private List<Anuncio> anunciosCreados;
@@ -178,12 +178,12 @@ public class Usuario {
 		this.rut = rut;
 	}
 
-	public List<Direccion> getDirecciones() {
-		return direcciones;
-	}
-	public void setDirecciones(List<Direccion> direcciones) {
-		this.direcciones = direcciones;
-	}
+//	public List<Direccion> getDirecciones() {
+//		return direcciones;
+//	}
+//	public void setDirecciones(List<Direccion> direcciones) {
+//		this.direcciones = direcciones;
+//	}
 
 	public List<Anuncio> getAnunciosCreados() {
 		return anunciosCreados;

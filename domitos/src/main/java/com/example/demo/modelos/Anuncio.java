@@ -44,6 +44,9 @@ public class Anuncio {
 	@NotEmpty(message="El campo de clasificacion es obligatorio")
 	private String clasificacion;
 	
+	@NotEmpty(message="El campo de direccion es obligatorio")
+	private String direccion;
+	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -51,9 +54,9 @@ public class Anuncio {
 	private Date updatedAt;
 	
 //Joins
-	@OneToOne(fetch=FetchType.LAZY) //pendiente: preguntarle a la profe CASCADE TYPE ????????????????????????????????????????????????????
-	@JoinColumn(name="direccion_id")
-	private Direccion direccion;
+//	@OneToOne(fetch=FetchType.LAZY) //pendiente: preguntarle a la profe CASCADE TYPE ????????????????????????????????????????????????????
+//	@JoinColumn(name="direccion_id")
+//	private Direccion direccion;
 
 	
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -112,12 +115,12 @@ public class Anuncio {
 		this.fechaLimite = fechaLimite;
 	}
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
+//	public Direccion getDireccion() {
+//		return direccion;
+//	}
+//	public void setDireccion(Direccion direccion) {
+//		this.direccion = direccion;
+//	}
 
 
 	public String getClasificacion() {
@@ -140,6 +143,14 @@ public class Anuncio {
 	}
 	public void setListaDomos(List<Usuario> listaDomos) {
 		this.listaDomos = listaDomos;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	//methods

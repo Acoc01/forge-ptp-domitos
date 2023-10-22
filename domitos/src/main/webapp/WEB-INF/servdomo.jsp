@@ -25,7 +25,16 @@
         <h4>${tramites.titulo}</h4>
         <p>${tramites.descripcion}</p>
         <p>Fecha Límite: ${tramites.fechaLimite}</p>
+        <c:if test="${ usuario.domo == true && tramites.listaDomos.contains(usuario) == false}">
+       		<form action="anuncio/${ tramites.id }/solicitar" method="POST">
+       			<input type="hidden" value="${ usuario.id }" name="id">
+       			<input type="submit" value="Enlistarse">	
+       		</form> 
+        </c:if>
     </c:forEach>
+    <c:if test="${ usuario.domo == false}">
+   		<a href="crearAnuncio">Crear mi anuncio</a>
+    </c:if>
 	</div>
 	
 	

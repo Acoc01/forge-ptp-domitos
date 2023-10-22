@@ -50,12 +50,12 @@ public class Direccion {
 	private Date updatedAt;
 	
 //Joins
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
-	
-	@OneToOne(fetch=FetchType.LAZY, mappedBy="direccion")
-	private Anuncio anuncio;
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="usuario_id")
+//	private Usuario usuario;
+//	
+//	@OneToOne(fetch=FetchType.LAZY, mappedBy="direccion")
+//	private Anuncio anuncio;
 
 //constructor
 	public Direccion () {}
@@ -124,19 +124,19 @@ public class Direccion {
 		this.updatedAt = updatedAt;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Anuncio getAnuncio() {
-		return anuncio;
-	}
-	public void setAnuncio(Anuncio anuncio) {
-		this.anuncio = anuncio;
-	}
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
+//
+//	public Anuncio getAnuncio() {
+//		return anuncio;
+//	}
+//	public void setAnuncio(Anuncio anuncio) {
+//		this.anuncio = anuncio;
+//	}
 
 	//methods
 	@PrePersist

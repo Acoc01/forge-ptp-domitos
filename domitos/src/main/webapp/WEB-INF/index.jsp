@@ -39,7 +39,11 @@
                 		<form:password path="confirmacion"/>
                 		<form:errors path="confirmacion"></form:errors>
                 	</div>
-                	<form:hidden path="domo" value="False"/>
+                	<div>
+                		<input type="checkbox" name="domo" value="True" id="domoCheck">
+                		<label for="domoCheck">Quiero ser un domo</label>
+                	</div>
+                	<!--<form:hidden path="domo" value="False"/>-->
                 	<input type="submit" value="Registrarme"/>
                 </form:form>
             </div>

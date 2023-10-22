@@ -14,5 +14,7 @@ public interface RepositorioAnuncio extends CrudRepository<Anuncio, Long> {
 
 	List<Anuncio> findByClasificacion(String clasificacion);
 	
+	List<Anuncio> findByCreadorId(Long id);
+	
 	
 }

@@ -18,8 +18,8 @@
     <section class="shopping-cart dark">
         <div class="container container__cart">
             <div class="block-heading">
-                <h2>Shopping Cart</h2>
-                <p>This is an example of a Mercado Pago integration</p>
+                <h2>Detalles del Domo</h2>
+                <p>Juan Perez</p>
             </div>
             <div class="content">
                 <div class="row">
@@ -33,18 +33,18 @@
                                                 <img class="img-fluid mx-auto d-block image" src="@{/img/product.png}">
                                             </div>
                                             <div class="col-md-4 product-detail">
-                                                <h5>Product</h5>
+                                                <h5>Domo</h5>
                                                 <div class="product-info">
-                                                    <p><b>Description: </b><span id="product-description">Some book</span><br>
-                                                        <b>Author: </b>Dale Carnegie<br>
-                                                        <b>Number of pages: </b>336<br>
-                                                        <b>Price:</b> $ <span id="unit-price">10</span></p>
+                                                    <p><b>Nombre: </b><span id="product-description">Juan Perez</span><br>
+                                                     <!--     <b>Author: </b>Dale Carnegie<br>
+                                                        <b>Number of pages: </b>336<br> -->
+                                                        <b>Precio:</b> $ <span id="unit-price">10</span></p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 product-detail">
+                                            <!--  <div class="col-md-3 product-detail">
                                                 <label for="quantity"><h5>Quantity</h5></label>
                                                 <input type="number" id="quantity" value="1" min="1" class="form-control">
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -53,9 +53,8 @@
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <div class="summary">
-                            <h3>Cart</h3>
                             <div class="summary-item"><span class="text">Subtotal</span><span class="price" id="cart-total"></span></div>
-                            <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Checkout</button>
+                            <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Pagar</button>
                         </div>
                     </div>
                 </div>
@@ -66,28 +65,28 @@
     <section class="payment-form dark">
         <div class="container__payment">
             <div class="block-heading">
-                <h2>Card Payment</h2>
-                <p>This is an example of a Mercado Pago integration</p>
+                <h2>Pago con Tarjeta</h2>
+                <p>Ingrese los datos de su tarjeta para finalizar la compra del servicio.</p>
             </div>
             <div class="form-payment">
                 <div class="products">
-                    <h2 class="title">Summary</h2>
+                    <h2 class="title">Resumen</h2>
                     <div class="item">
-                        <span class="price" id="summary-price"></span>
-                        <p class="item-name">Book x <span id="summary-quantity"></span></p>
+                        <!--  <span class="price" id="summary-price"></span> -->
+                        <!--  <p class="item-name">Book x <span id="summary-quantity"></span></p> -->
                     </div>
                     <div class="total">Total<span class="price" id="summary-total"></span></div>
                 </div>
                 <div class="payment-details">
                     <form id="form-checkout">
-                        <h3 class="title">Buyer Details</h3>
+                        <h3 class="title">Detalles del Comprador</h3>
                         <div class="row">
                             <div class="form-group col">
                                 <input id="form-checkout__cardholderEmail" name="cardholderEmail" type="email" class="form-control"/>
                             </div>
                         </div>
                         <br>
-                        <h3 class="title">Card Details</h3>
+                        <h3 class="title">Detalles de la Tarjeta</h3>
                         <div class="row">
                             <div class="form-group col-sm-8">
                                 <input id="form-checkout__cardholderName" name="cardholderName" type="text" class="form-control"/>
@@ -115,15 +114,15 @@
                                 <div id="validation-error-messages">
                                 </div>
                                 <br>
-                                <button id="form-checkout__submit" type="submit" class="btn btn-primary btn-block">Pay</button>
+                                <button id="form-checkout__submit" type="submit" class="btn btn-primary btn-block">Pagar</button>
                                 <br>
-                                <p id="loading-message">Loading, please wait...</p>
+                                <p id="loading-message">Cargando, por favor espere...</p>
                                 <br>
                                 <a id="go-back">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" class="chevron-left">
                                         <path fill="#009EE3" fill-rule="nonzero"id="chevron_left" d="M7.05 1.4L6.2.552 1.756 4.997l4.449 4.448.849-.848-3.6-3.6z"></path>
                                     </svg>
-                                    Go back to Shopping Cart
+                                   	Volver 
                                 </a>
                             </div>
                         </div>

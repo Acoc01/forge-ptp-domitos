@@ -1,5 +1,7 @@
 package com.example.demo.controladores;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.demo.modelos.Anuncio;
 import com.example.demo.modelos.Usuario;
+import com.example.demo.servicios.ServicioAnuncio;
 import com.example.demo.servicios.Servicios;
 
 import jakarta.servlet.http.HttpSession;
@@ -21,18 +25,19 @@ public class ControladorUsuarios {
 
 	@Autowired
 	private Servicios servicio;
+	@Autowired ServicioAnuncio sa;
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
-		return "login.jsp";
+		return "index.jsp";
 	}
-	
+
 	@PostMapping("/registro")
 	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
 						   BindingResult result,
-						   HttpSession session) {
+						   HttpSession session, @RequestParam("domo") Boolean domo) {
 		
-		servicio.registrar(nuevoUsuario, result);
+		servicio.registrar(nuevoUsuario, result, domo);
 
 		if(result.hasErrors()) {
 			return "index.jsp";
@@ -44,8 +49,8 @@ public class ControladorUsuarios {
 	@PostMapping("/registro/domo")
 	public String registroDomo(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
 							   BindingResult result,
-							   HttpSession session) {
-		servicio.registrar(nuevoUsuario, result);
+							   HttpSession session, @RequestParam("domo") Boolean domo) {
+		servicio.registrar(nuevoUsuario, result, domo);
 
 		if(result.hasErrors()) {
 			return "index.jsp";
@@ -85,6 +90,9 @@ public class ControladorUsuarios {
 		if(user == null) {
 			return "redirect:/";
 		}
+		List<Anuncio> misAnuncios = sa.encontrarMisAnuncios(user.getId());
+		System.out.println(misAnuncios.size());
+		model.addAttribute("anuncios",misAnuncios);
 		model.addAttribute("usuario",user);
 		return "perfil.jsp";
 	}
@@ -92,5 +100,10 @@ public class ControladorUsuarios {
 	@GetMapping("/dashboard")
 	public String temporal() {
 		return "servdomo.jsp";
+	}
+	
+	@GetMapping("/login")
+	public String iniciarSesion() {
+		return "login.jsp";
 	}
 }
