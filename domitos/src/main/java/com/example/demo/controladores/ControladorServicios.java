@@ -13,17 +13,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.modelos.Anuncio;
 import com.example.demo.modelos.Clasificacion;
+import com.example.demo.modelos.Usuario;
 import com.example.demo.servicios.ServicioAnuncio;
+import com.example.demo.servicios.Servicios;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ControladorServicios {
 
 	@Autowired
 	private ServicioAnuncio ra;
+	@Autowired
+	private Servicios servicios;
 
 	@GetMapping("/crearAnuncio")
-	public String mostrarFormulario(Model model) {
+	public String mostrarFormulario(Model model, HttpSession session) {
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
 	    model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
+	    model.addAttribute("usuario", user);
 	    return "anuncio.jsp";
 	}
 
@@ -32,14 +43,16 @@ public class ControladorServicios {
 	public String guardarAnuncio(@RequestParam ("titulo")String titulo, 
 	                             @RequestParam ("descripcion") String descripcion,
 	                             @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam  ("fechaLimite") Date fechaLimite,
-	                             @RequestParam ("clasificacion")String clasificacion) {
+	                             @RequestParam ("clasificacion")String clasificacion,
+	                             @RequestParam ("creadorId") Long hostId) {
 
-
+		Usuario creador = servicios.encontrarUsuario(hostId);
 	    Anuncio anuncio = new Anuncio();
 	    anuncio.setTitulo(titulo);
 	    anuncio.setDescripcion(descripcion);
 	    anuncio.setFechaLimite(fechaLimite);
 	    anuncio.setClasificacion(clasificacion);
+	    anuncio.setCreador(creador);
 
 	    ra.guardarAnuncio(anuncio);
 

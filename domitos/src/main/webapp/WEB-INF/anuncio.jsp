@@ -30,7 +30,7 @@
           		</c:forEach>
            </select>
       	</div>
-        
+       	<input type="hidden" name="creadorId" value="${ usuario.id }"> 
         <input type="submit" value="Crear Anuncio">
     </form>
 </body>

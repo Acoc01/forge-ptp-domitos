@@ -94,7 +94,7 @@ public class RestaurarPassword {
 		}else {
 			servicios.updatePassword(user, password);
 			model.addAttribute("mensaje","Se ha actualizado su contraseña");
+			return "redirect:/login";
 		}
-		return "redirect:/login";
 	}
 }

@@ -14,6 +14,10 @@ public class Servicios {
 	@Autowired
 	private RepositorioUsuarios repoUsuarios;
 	
+	public Usuario encontrarUsuario(Long id) {
+		return repoUsuarios.findById(id).orElse(null);
+	}
+	
 	/* Método que me registre un nuevo usuario */
     public Usuario registrar(Usuario nuevoUsuario, BindingResult result) {
         //Comparamos contraseñas
