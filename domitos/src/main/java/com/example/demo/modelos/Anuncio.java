@@ -41,6 +41,9 @@ public class Anuncio {
 	@Future(message="Debe ser una fecha futura")
 	private Date fechaLimite;
 	
+	@NotEmpty(message="El campo de clasificacion es obligatorio")
+	private String clasificacion;
+	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -51,10 +54,7 @@ public class Anuncio {
 	@OneToOne(fetch=FetchType.LAZY) //pendiente: preguntarle a la profe CASCADE TYPE ????????????????????????????????????????????????????
 	@JoinColumn(name="direccion_id")
 	private Direccion direccion;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="clasificacion_id")
-	private Clasificacion clasificacion;
+
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="creador_id")
@@ -119,10 +119,12 @@ public class Anuncio {
 		this.direccion = direccion;
 	}
 
-	public Clasificacion getClasificacion() {
+
+	public String getClasificacion() {
 		return clasificacion;
 	}
-	public void setClasificacion(Clasificacion clasificacion) {
+
+	public void setClasificacion(String clasificacion) {
 		this.clasificacion = clasificacion;
 	}
 
