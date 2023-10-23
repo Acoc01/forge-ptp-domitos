@@ -1,4 +1,4 @@
-package com.example.modelos;
+package com.example.demo.modelos;
 
 import java.util.Date;
 
@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -40,8 +41,7 @@ public class Direccion {
 	@NotEmpty
 	private int numero;
 	
-//pendiente: departamento o dojo mojo casa house douuuuuu
-//pendiente: enalce con API para que se desplieguen las comunas al colocar la ciudad
+	private String complemento;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -50,9 +50,12 @@ public class Direccion {
 	private Date updatedAt;
 	
 //Joins
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuario_id")
-	private Usuario usuario;
+//	@ManyToOne(fetch=FetchType.LAZY)
+//	@JoinColumn(name="usuario_id")
+//	private Usuario usuario;
+//	
+//	@OneToOne(fetch=FetchType.LAZY, mappedBy="direccion")
+//	private Anuncio anuncio;
 
 //constructor
 	public Direccion () {}
@@ -100,6 +103,13 @@ public class Direccion {
 		this.numero = numero;
 	}
 
+	public String getComplemento() {
+		return complemento;
+	}
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -114,7 +124,21 @@ public class Direccion {
 		this.updatedAt = updatedAt;
 	}
 
-//methods
+//	public Usuario getUsuario() {
+//		return usuario;
+//	}
+//	public void setUsuario(Usuario usuario) {
+//		this.usuario = usuario;
+//	}
+//
+//	public Anuncio getAnuncio() {
+//		return anuncio;
+//	}
+//	public void setAnuncio(Anuncio anuncio) {
+//		this.anuncio = anuncio;
+//	}
+
+	//methods
 	@PrePersist
   	protected void onCreate() {
   	    this.createdAt = new Date();

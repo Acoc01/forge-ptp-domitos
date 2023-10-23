@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+.profile-photo{
+	width: 200px;
+	margin-bottom: 10px;
+}
+
+.info{
+	margin-left: 30px;
+	margin-bottom: 10px;
+}
