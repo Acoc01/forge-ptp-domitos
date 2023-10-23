@@ -81,7 +81,9 @@
 						  <div class="card-body">
 							<h5 class="card-title">${ anuncio.titulo }</h5>
 							<p class="card-text">${ anuncio.descripcion }</p>
-							<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
+							<c:if test="${ usuario.id == usuarioEnSesion.id }">
+								<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
+							</c:if>
 						  </div>
 						  <div class="card-footer text-body-secondary">
 							${ anuncio.createdAt }
@@ -90,7 +92,7 @@
 					</div>	
 				</c:forEach>
 			</c:if>
-			<c:if test="${ usuario.domo == true }">
+			<c:if test="${ usuario.domo == true}">
 				<c:forEach items="${ postulaciones }" var="anuncio">
 					<div class="col-sm-4">
 						<div class="card text-center">
@@ -100,7 +102,6 @@
 						  <div class="card-body">
 							<h5 class="card-title">${ anuncio.titulo }</h5>
 							<p class="card-text">${ anuncio.descripcion }</p>
-							<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
 						  </div>
 						  <div class="card-footer text-body-secondary">
 							${ anuncio.createdAt }
