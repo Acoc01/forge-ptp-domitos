@@ -41,6 +41,15 @@ public class ControladorServicios {
 	    return "anuncio.jsp";
 	}
 	
+	@GetMapping("/servicios/general")
+	public String serviciosGeneral(HttpSession session, Model model) {
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user != null && user.getDomo() == true) {
+			return "redirect:/servicios/domo";
+		}
+		return "servgeneral.jsp";
+	}
+	
 //	@PostMapping("/guardarAnuncio")
 //	public String guardarAnuncio(@Valid @ModelAttribute("anuncio") Anuncio anuncio, BindingResult result, HttpSession session, Model model) {
 //		Usuario temp = (Usuario)session.getAttribute("usuarioEnSesion");
