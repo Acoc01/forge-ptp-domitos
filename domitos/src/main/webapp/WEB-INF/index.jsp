@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +12,7 @@
 	<div>
         <div>
             <div>
-                <h2>Regístrate</h2>
+                <h2>Regï¿½strate</h2>
                 <form:form method="POST" action="/registro" modelAttribute="nuevoUsuario">
                 	<div>
                 		<form:label path="nombre">Nombre</form:label>
@@ -30,12 +30,12 @@
                 		<form:errors path="email"></form:errors>
                 	</div>
                 	<div>
-                		<form:label path="contrasena">Contraseña</form:label>
+                		<form:label path="contrasena">Contraseï¿½a</form:label>
                 		<form:password path="contrasena"/>
                 		<form:errors path="contrasena"></form:errors>
                 	</div>
                 	<div>
-                		<form:label path="confirmacion">Confirmación</form:label>
+                		<form:label path="confirmacion">Confirmaciï¿½n</form:label>
                 		<form:password path="confirmacion"/>
                 		<form:errors path="confirmacion"></form:errors>
                 	</div>
@@ -50,7 +50,7 @@
                 </form:form>
             </div>
             <div>
-            	<h2>Inicia Sesión</h2>
+            	<h2>Inicia Sesiï¿½n</h2>
             	<p>${error_login}</p>
             	<form action="/login" method="POST">
             		<div>
@@ -58,10 +58,10 @@
             			<input type="email" name="email"/>
             		</div>
             		<div>
-            			<label>Contraseña</label>
+            			<label>Contraseï¿½a</label>
             			<input type="password" name="contrasena"/>
             		</div>
-            		<input type="submit" value="Iniciar Sesión">
+            		<input type="submit" value="Iniciar Sesiï¿½n">
             	</form>
             </div>
         </div>

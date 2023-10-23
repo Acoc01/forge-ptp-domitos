@@ -47,20 +47,6 @@ public class ControladorUsuarios {
 			return "redirect:/dashboard";
 		}
 	}
-	@PostMapping("/registro/domo")
-	public String registroDomo(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
-							   BindingResult result,
-							   HttpSession session, @RequestParam("domo") Boolean domo) {
-		servicio.registrar(nuevoUsuario, result, domo);
-
-		if(result.hasErrors()) {
-			return "index.jsp";
-		} else {
-			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
-		}
-		
-	}
 	
 	@PostMapping("/login") 
 	public String login(@RequestParam("email") String email,
