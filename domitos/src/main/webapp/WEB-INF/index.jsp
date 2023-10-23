@@ -42,8 +42,8 @@
                 	<div>
                 		<input type="checkbox" name="domo" value="True" id="domoCheck" onClick="isDomo()">
                 		<label for="domoCheck">Quiero ser un domo</label>
-                		<input type="checkbox" name="domo" value="False" id="userCheck" onClick="isDomo()">
-                		<label for="domoCheck">Quiero ser un usuario</label>
+                		<input type="checkbox" name="domo" value="False" id="userCheck" onClick="isUser()">
+                		<label for="userCheck">Quiero ser un usuario</label>
                 	</div>
                 	<!--<form:hidden path="domo" value="False"/>-->
                 	<input type="submit" value="Registrarme"/>
@@ -68,14 +68,19 @@
     </div>
 </body>
 <script>
+	function isUser(){
+		let cb = document.getElementById("domoCheck");
+		let cb2 = document.getElementById("userCheck");
+		if(cb2.checked == true && cb.checked == true){
+			cb.checked=false;
+		}
+	}
 	function isDomo(){
 		let cb = document.getElementById("domoCheck");
 		let cb2 = document.getElementById("userCheck");
-		if(cb.checked == false){
-			cb2.checked = true;
-		}else{
+		if(cb.checked == true && cb2.checked == true){
 			cb2.checked = false;
-		}
+		}	
 	}
 </script>
 </html>
