@@ -40,7 +40,7 @@
                 		<form:errors path="confirmacion"></form:errors>
                 	</div>
                 	<div>
-                		<input type="checkbox" name="domo" value="True" id="domoCheck">
+                		<input type="checkbox" name="domo" value="True" id="domoCheck" onClick="isDomo()">
                 		<label for="domoCheck">Quiero ser un domo</label>
                 	</div>
                 	<!--<form:hidden path="domo" value="False"/>-->
@@ -65,4 +65,17 @@
         </div>
     </div>
 </body>
+<script>
+	function isDomo(){
+		let cb = document.getElementById("domoCheck");
+		let cb2 = document.getElementById("domoHidden");
+		if(cb.checked == false){
+			cb.value = "False";	
+			console.log(cb.value);
+		}else{
+			cb.value = "True";
+			console.log(cb.value);
+		}
+	}
+</script>
 </html>
