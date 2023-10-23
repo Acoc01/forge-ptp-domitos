@@ -15,12 +15,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -46,6 +46,9 @@ public class Anuncio {
 	
 	@NotEmpty(message="El campo de direccion es obligatorio")
 	private String direccion;
+	
+	@NotNull(message="El precio es obligatorio")
+	private Integer precio;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -151,6 +154,14 @@ public class Anuncio {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public Integer getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Integer precio) {
+		this.precio = precio;
 	}
 
 	//methods

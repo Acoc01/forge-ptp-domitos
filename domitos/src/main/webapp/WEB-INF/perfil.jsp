@@ -61,28 +61,54 @@
 	<!-- Seccion de anuncios hechos por el usuario -->
 	<section class="container-fluid bg-primary-subtle">
 		<div class="row border-bottom mb-3 mt-1 text-center">
-			<h3>Mis Anuncios</h3>
+			<c:if test="${ usuario.domo == false }">
+				<h3>Mis Anuncios</h3>
+			</c:if>
+			<c:if test="${ usuario.domo == true }">
+				<h3>Mis Postulaciones</h3>
+			</c:if>
 		</div>
 		<!-- Aqui deberian mostrarse los anuncios del usuario ordenados desde el mas reciente al mas antiguo -->
 		<!-- La idea es que se muestre un solo anuncio por fila o tres por fila, en este ejemplo hay tres por fila pero es provicional -->
 		<div class="row bg-primary-subtle pb-4">
-			<c:forEach items="${ anuncios }" var="anuncio">
-				<div class="col-sm-4">
-					<div class="card text-center">
-					  <div class="card-header">
-						${ anuncio.clasificacion }
-					  </div>
-					  <div class="card-body">
-						<h5 class="card-title">${ anuncio.titulo }</h5>
-						<p class="card-text">${ anuncio.descripcion }</p>
-						<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
-					  </div>
-					  <div class="card-footer text-body-secondary">
-						${ anuncio.createdAt }
-					  </div>
-					</div>
-				</div>	
-			</c:forEach>
+			<c:if test="${ usuario.domo == false }">
+				<c:forEach items="${ anuncios }" var="anuncio">
+					<div class="col-sm-4">
+						<div class="card text-center">
+						  <div class="card-header">
+							${ anuncio.clasificacion }
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">${ anuncio.titulo }</h5>
+							<p class="card-text">${ anuncio.descripcion }</p>
+							<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
+						  </div>
+						  <div class="card-footer text-body-secondary">
+							${ anuncio.createdAt }
+						  </div>
+						</div>
+					</div>	
+				</c:forEach>
+			</c:if>
+			<c:if test="${ usuario.domo == true }">
+				<c:forEach items="${ postulaciones }" var="anuncio">
+					<div class="col-sm-4">
+						<div class="card text-center">
+						  <div class="card-header">
+							${ anuncio.clasificacion }
+						  </div>
+						  <div class="card-body">
+							<h5 class="card-title">${ anuncio.titulo }</h5>
+							<p class="card-text">${ anuncio.descripcion }</p>
+							<a href="/anuncios/${ anuncio.id }" class="btn btn-primary">Ver Solicitantes</a>
+						  </div>
+						  <div class="card-footer text-body-secondary">
+							${ anuncio.createdAt }
+						  </div>
+						</div>
+					</div>	
+				</c:forEach>
+			</c:if>
 		</div>
 		
 	</section>

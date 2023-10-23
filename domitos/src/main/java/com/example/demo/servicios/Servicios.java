@@ -18,6 +18,10 @@ public class Servicios {
 		return repoUsuarios.findById(id).orElse(null);
 	}
 	
+	public Usuario guardarUsuario(Usuario user) {
+		return repoUsuarios.save(user);
+	}
+	
 	/* Método que me registre un nuevo usuario */
     public Usuario registrar(Usuario nuevoUsuario, BindingResult result, Boolean domo) {
         //Comparamos contraseñas

@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,15 +30,34 @@ public class ControladorServicios {
 	private Servicios servicios;
 
 	@GetMapping("/crearAnuncio")
-	public String mostrarFormulario(Model model, HttpSession session) {
+	public String mostrarFormulario(@ModelAttribute("anuncio") Anuncio anuncio, Model model, HttpSession session) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
-		if(user == null) {
+		if(user == null || user.getDomo() == true) {
 			return "redirect:/";
 		}
+		Usuario usuario = servicios.encontrarUsuario(user.getId());
 	    model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
-	    model.addAttribute("usuario", user);
+	    model.addAttribute("usuario", usuario);
 	    return "anuncio.jsp";
 	}
+	
+//	@PostMapping("/guardarAnuncio")
+//	public String guardarAnuncio(@Valid @ModelAttribute("anuncio") Anuncio anuncio, BindingResult result, HttpSession session, Model model) {
+//		Usuario temp = (Usuario)session.getAttribute("usuarioEnSesion");
+//		if(temp == null) {
+//			return "redirect:/";
+//		}
+//		if(result.hasErrors()) {
+//			model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
+//			model.addAttribute("usuario", temp);
+//			return "anuncio.jsp";
+//		}else {
+//
+//			ra.guardarAnuncio(anuncio);
+//			return "redirect:/mostrarAnuncios";
+//		}
+//		
+//	}
 
 
 	@PostMapping("/guardarAnuncio")
@@ -46,8 +66,13 @@ public class ControladorServicios {
 	                             @DateTimeFormat(pattern = "yyyy-MM-dd") @RequestParam  ("fechaLimite") Date fechaLimite,
 	                             @RequestParam ("clasificacion")String clasificacion,
 	                             @RequestParam ("creadorId") Long hostId,
-	                             @RequestParam ("direccion") String direccion) {
+	                             @RequestParam ("direccion") String direccion,
+	                             @RequestParam ("precio") Integer precio, HttpSession session) {
 
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null || user.getDomo() == true) {
+			return "redirect:/";
+		}
 		Usuario creador = servicios.encontrarUsuario(hostId);
 	    Anuncio anuncio = new Anuncio();
 	    anuncio.setTitulo(titulo);
@@ -56,6 +81,7 @@ public class ControladorServicios {
 	    anuncio.setClasificacion(clasificacion);
 	    anuncio.setCreador(creador);
 	    anuncio.setDireccion(direccion);
+	    anuncio.setPrecio(precio);
 
 	    ra.guardarAnuncio(anuncio);
 
@@ -68,15 +94,19 @@ public class ControladorServicios {
 	public String mostrarAnuncios(Model model, HttpSession session) {
 		
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
 		
-		model.addAttribute("usuario",user);
+		Usuario usuario = servicios.encontrarUsuario(user.getId());
+		model.addAttribute("usuario",usuario);
 		
 		List<Anuncio> tramites = ra.encontrarAnuncios("tramites");
 		List<Anuncio> cuidados = ra.encontrarAnuncios("cuidados");
 		List<Anuncio> reparaciones = ra.encontrarAnuncios("reparaciones");
 		List<Anuncio> cuidadoAdultoMayor = ra.encontrarAnuncios("cuidadoAdulto");
 		List<Anuncio> cuidadoNinos = ra.encontrarAnuncios("cuidadoNinos");
-		List<Anuncio> mascotas = ra.encontrarAnuncios("mascotas");
+		List<Anuncio> mascotas = ra.encontrarAnuncios("cuidadoMascotas");
 		
 		
 		model.addAttribute("tramites", tramites);
@@ -98,6 +128,7 @@ public class ControladorServicios {
 		}
 		Anuncio miAnuncio = ra.encontrarAnuncioPorId(anuncioId);
 		model.addAttribute("anuncio",miAnuncio);
+		model.addAttribute("postulantes", miAnuncio.getListaDomos());
 		return "detallesAnuncio.jsp";
 	}
 	
@@ -113,7 +144,9 @@ public class ControladorServicios {
 		List<Usuario> domos = anuncio.getListaDomos();
 		domos.add(user);
 		anuncio.setListaDomos(domos);
+		user.getListaAnuncios().add(anuncio);
 		ra.guardarAnuncio(anuncio);
+		servicios.guardarUsuario(user);
 		
 		
 		List<Anuncio> tramites = ra.encontrarAnuncios("tramites");

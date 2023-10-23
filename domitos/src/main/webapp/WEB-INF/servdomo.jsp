@@ -27,35 +27,12 @@
         <h4>${tramites.titulo}</h4>
         <p>${tramites.descripcion}</p>
         <p>Fecha Límite: ${tramites.fechaLimite}</p>
+        <p>Precio: ${ tramites.precio }</p>
         <c:if test="${ usuario.domo == true && tramites.listaDomos.contains(usuario) == false}">
-			<!-- Button trigger modal -->
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-			  Launch demo modal
-			</button>
-
-			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese el precio a cobrar por su servicio</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				  </div>
-				  <div class="modal-body">
-					   <form action="anuncio/${ tramites.id }/solicitar" method="POST">
-							  <label for="precio">Precio:</label>
-							  <input type="text" name="precio" id="precio">
-						   <input type="hidden" value="${ usuario.id }" name="id">
-						   <input type="submit" value="Enlistarse">	
-					   </form> 
-				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				  </div>
-				</div>
-			  </div>
-			</div>
+		   <form action="anuncio/${ tramites.id }/solicitar" method="POST">
+			   <input type="hidden" value="${ usuario.id }" name="id">
+			   <input type="submit" value="Enlistarse">	
+		   </form> 
         </c:if>
     </c:forEach>
     <c:if test="${ usuario.domo == false}">
@@ -65,13 +42,52 @@
 	
 	
    <div class="contenido">
-   <h1>Cuidados</h1>
-    <c:forEach items="${cuidados}" var="cuidados">
-        
-        <h4>${cuidados.titulo}</h4>
-        <p>${cuidados.descripcion}</p>
-        <p>Fecha Límite: ${cuidados.fechaLimite}</p>
-    </c:forEach>
+	   <h1>Cuidados</h1>
+		<h2>Cuidado Adulto Mayor</h2>
+		<c:forEach items="${cuidadoAdulto}" var="cuidadoAdulto">
+			
+			<h4>${cuidadoAdulto.titulo}</h4>
+			<p>${cuidadoAdulto.descripcion}</p>
+			<p>Fecha Límite: ${cuidadoAdulto.fechaLimite}</p>
+			<p>Precio: ${ cuidadoAdulto.precio }</p>
+			<c:if test="${ usuario.domo == true && cuidados.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ cuidados.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+	   <h2>Mascotas</h2>
+		<c:forEach items="${mascotas}" var="mascotas">
+		   
+			<h4>${mascotas.titulo}</h4>
+			<p>${mascotas.descripcion}</p>
+			<p>Fecha Límite: ${mascotas.fechaLimite}</p>
+			<p>Precio: ${ mascotas.precio }</p>
+			<c:if test="${ usuario.domo == true && mascotas.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ mascotas.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+	   <h2>Cuidados Niños</h2>
+		<c:forEach items="${cuidadoNino}" var="cuidadoNino">
+		   
+			<h4>${cuidadoNino.titulo}</h4>
+			<p>${cuidadoNino.descripcion}</p>
+			<p>Fecha Límite: ${cuidadoNino.fechaLimite}</p>
+			<p>Precio: ${ cuidadoNino.precio }</p>
+			<c:if test="${ usuario.domo == true && cuidadoNino.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ cuidadoNino.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+		<c:if test="${ usuario.domo == false}">
+			   <a href="crearAnuncio">Crear mi anuncio</a>
+		</c:if>
 	</div>
            
    
@@ -82,41 +98,17 @@
         <h4>${reparaciones.titulo}</h4>
         <p>${reparaciones.descripcion}</p>
         <p>Fecha Límite: ${reparaciones.fechaLimite}</p>
+        <p>Precio: ${ reparaciones.precio }</p>
+        <c:if test="${ usuario.domo == true && reparaciones.listaDomos.contains(usuario) == false}">
+		   <form action="anuncio/${ reparaciones.id }/solicitar" method="POST">
+			   <input type="hidden" value="${ usuario.id }" name="id">
+			   <input type="submit" value="Enlistarse">	
+		   </form> 
+        </c:if>
     </c:forEach>
+    <c:if test="${ usuario.domo == false}">
+   		<a href="crearAnuncio">Crear mi anuncio</a>
+    </c:if>
 	</div>
-    
-   
-   <div class="contenido">
-    <h1>Cuidado Adulto Mayor</h1>
-    <c:forEach items="${cuidadoAdulto}" var="cuidadoAdulto">
-        
-        <h4>${cuidadoAdulto.titulo}</h4>
-        <p>${cuidadoAdulto.descripcion}</p>
-        <p>Fecha Límite: ${cuidadoAdulto.fechaLimite}</p>
-    </c:forEach>
-	</div>
-	
-	
-   <div class="contenido">
-   <h1>Cuidados Niños</h1>
-    <c:forEach items="${cuidadoNino}" var="cuidadoNino">
-       
-        <h4>${cuidadoNino.titulo}</h4>
-        <p>${cuidadoNino.descripcion}</p>
-        <p>Fecha Límite: ${cuidadoNino.fechaLimite}</p>
-    </c:forEach>
-	</div>
-	
-	
-   <div class="contenido">
-   <h1>Mascotas</h1>
-    <c:forEach items="${mascotas}" var="mascotas">
-       
-        <h4>${mascotas.titulo}</h4>
-        <p>${mascotas.descripcion}</p>
-        <p>Fecha Límite: ${mascotas.fechaLimite}</p>
-    </c:forEach>
-	</div>
-	
 </body>
 </html>

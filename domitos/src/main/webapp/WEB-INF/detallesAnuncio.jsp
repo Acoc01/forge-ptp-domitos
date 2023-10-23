@@ -56,15 +56,15 @@
 				<thead>
 					<tr>
 						<th>Nombre</th>
-						<th>Precio</th>
 						<th>Pago</th>
 					</tr>
 				</thead>
+				<c:forEach items="${ postulantes }" var="postulante">
 					<tr>
-						<td>Juan Perez</td>	
-						<td>20000</td>
+						<td>${ postulante.nombre } ${ postulante.apellido }</td>	
 						<td><a href="/pago" class="btn btn-primary">Pagar</a></td>
 					</tr>
+				</c:forEach>
 				<tbody>
 				</tbody>
 			</table>

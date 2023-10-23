@@ -81,7 +81,7 @@ public class Usuario {
 			   inverseJoinColumns=@JoinColumn(name="medalla_id"))
 	private List<Medalla> medallas;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="postulaciones",
 			   joinColumns=@JoinColumn(name="domo_id"),
 			   inverseJoinColumns=@JoinColumn(name="anuncio_id"))

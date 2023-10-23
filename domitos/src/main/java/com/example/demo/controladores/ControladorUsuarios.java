@@ -80,6 +80,10 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session){
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
 		session.removeAttribute("usuarioEnSesion");
 		return "redirect:/";
 	}
@@ -90,15 +94,20 @@ public class ControladorUsuarios {
 		if(user == null) {
 			return "redirect:/";
 		}
-		List<Anuncio> misAnuncios = sa.encontrarMisAnuncios(user.getId());
-		System.out.println(misAnuncios.size());
+		Usuario usuario = servicio.encontrarUsuario(user.getId());
+		List<Anuncio> misAnuncios = sa.encontrarMisAnuncios(usuario.getId());
 		model.addAttribute("anuncios",misAnuncios);
-		model.addAttribute("usuario",user);
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("postulaciones", usuario.getListaAnuncios());
 		return "perfil.jsp";
 	}
 	
 	@GetMapping("/dashboard")
-	public String temporal() {
+	public String temporal(HttpSession session) {
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
 		return "servdomo.jsp";
 	}
 	

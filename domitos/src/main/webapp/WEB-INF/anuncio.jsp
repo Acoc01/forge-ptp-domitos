@@ -21,7 +21,10 @@
 
         <label for="descripcion">Descripción:</label><br>
         <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea><br>
-
+		<div>
+			<label for="precio">Precio:</label>
+			<input id="precio" name="precio" type="text">
+		</div>
         <div>
            <label>Clasificacion</label>
            <select name="clasificacion" class="form-select">
