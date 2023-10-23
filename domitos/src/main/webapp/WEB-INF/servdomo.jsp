@@ -7,6 +7,8 @@
 <meta charset="ISO-8859-1">
 <title>Servicios</title>
  <link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </head>
 <body>
      <!-- encabezado -->
@@ -26,10 +28,34 @@
         <p>${tramites.descripcion}</p>
         <p>Fecha Límite: ${tramites.fechaLimite}</p>
         <c:if test="${ usuario.domo == true && tramites.listaDomos.contains(usuario) == false}">
-       		<form action="anuncio/${ tramites.id }/solicitar" method="POST">
-       			<input type="hidden" value="${ usuario.id }" name="id">
-       			<input type="submit" value="Enlistarse">	
-       		</form> 
+			<!-- Button trigger modal -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			  Launch demo modal
+			</button>
+
+			<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese el precio a cobrar por su servicio</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				  </div>
+				  <div class="modal-body">
+					   <form action="anuncio/${ tramites.id }/solicitar" method="POST">
+							  <label for="precio">Precio:</label>
+							  <input type="text" name="precio" id="precio">
+						   <input type="hidden" value="${ usuario.id }" name="id">
+						   <input type="submit" value="Enlistarse">	
+					   </form> 
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				  </div>
+				</div>
+			  </div>
+			</div>
         </c:if>
     </c:forEach>
     <c:if test="${ usuario.domo == false}">
