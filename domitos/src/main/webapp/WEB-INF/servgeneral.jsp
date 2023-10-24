@@ -136,7 +136,7 @@
 						<a href="/crearAnuncio">
 								<img src="/images/mecanico.png" alt="mecanico"></a>
                 	</c:if>
-                	<c:if test="${ usuarioEnSesion != null }">
+                	<c:if test="${ usuarioEnSesion == null }">
 						<a href="/login">
 								<img src="/images/mecanico.png" alt="mecanico"></a>
                 	</c:if>

@@ -42,7 +42,7 @@
 
     }
         body {
-            background-image: url('pexels-martin-péchy-2844474.jpg');
+            background-image: url('/images/anuncio-fondo.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;

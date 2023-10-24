@@ -62,7 +62,7 @@
 		</div>
 		<div class="row">
 			<div class="d-flex align-items-center">
-				<img src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-Transparent.png" class="profile-photo float-start rounded-4">
+				<img src="/images/Profile.png" class="profile-photo float-start rounded-4">
 				<div class="info">
 					<p class="border-bottom">Nombre: ${ usuario.nombre }</p>
 					<p class="border-bottom">E-mail: ${ usuario.email }</p>	
