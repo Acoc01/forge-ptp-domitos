@@ -1,0 +1,192 @@
+@charset "ISO-8859-1";
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+nav {
+    width: 100vw;
+    height: 13%; /*TEMP*/
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    color:white;
+    padding-right: 2%;    
+}
+nav .titulo{
+    margin-right: 63%;
+    margin-left: 2%;
+    color: #FFF;
+    background-color: black;
+    font-family: Roboto Slab;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+nav .botones{
+    display: flex;
+    align-items: end;
+    margin: 1% 2% 2% 0%;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #F2E6E6;
+}
+.contenedor_servicios{
+    display: flex;
+    flex-direction: column;
+    margin: 8% 5% 10% 0%;
+
+}
+.box1{
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 5%;
+}
+.box2{
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 10%;
+    margin-left: 22%;
+    justify-content: space-around;
+    font-size: 20px;
+    
+
+}
+.box3{
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 5%;
+    justify-content: space-around;
+    margin-left: 22%;
+    
+
+}
+.box1 img{
+    width: 20%;
+    margin-top: 4%;
+}
+.box2 img{
+    width: 30%;
+    margin-top: 4%;
+}
+.box3 img{
+    width: 30%;
+    margin-top: 4%;
+}
+.izquierda img{
+    width: 35%;
+}
+.izquierda{
+    width: 15%;
+
+}
+.timbres{
+    font-size: 25px;
+    background-color: #F2E6E6;
+}
+.revision{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    margin-right: 25%;
+}
+.filas{
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    
+}
+.adultos{
+    display: flex;
+    flex-direction: column;
+
+}
+.niños{
+    margin-top: 3%;
+    display: flex;
+    flex-direction: column;
+}
+.mascotas{
+    margin-top: 3%; 
+    display: flex;
+    flex-direction: column;
+}
+.electrico{
+    display: flex;
+    flex-direction: column;
+}
+.gasfiter{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5%;
+}
+.mecanico{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5%;
+}
+.contenedor_servicios p{
+    font-size: 30px;
+}
+.contenedor_servicios h2{
+    font-size: 30px;
+}
+
+li{
+    margin-bottom: 10%;
+}
+
+#footer {
+    height: 20%;
+    border: 2px solid rgba(0, 0, 0, 0.54);
+    background: rgba(255, 0, 0, 0.40);
+    color: rgba(0, 0, 0, 0.50);
+    padding-left: 5%;
+    width: 100vw;
+
+}
+
+#footer h3{
+font-family: Roboto;
+font-size: 40px;
+font-weight: 600;
+font-style: italic;
+padding: 20px;
+
+}
+
+#ftr{
+    display: flex;
+    flex-direction: row
+
+}
+#ftr div{
+    width: 25%;
+    padding: 20px;
+}
+#ftr h4{
+    font-family: Inter;
+    font-size: 25px;
+    font-weight: bold;
+padding: 1%;
+
+}
+#ftr ul li, #ftr ul a{
+    list-style-type: none;
+font-family: Inter;
+font-size: 20px;
+text-decoration: none;
+color: rgba(0, 0, 0, 0.50);
+}

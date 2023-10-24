@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
     <title>Integration Example - Card Payment</title>
@@ -19,7 +20,7 @@
         <div class="container container__cart">
             <div class="block-heading">
                 <h2>Detalles del Domo</h2>
-                <p>Juan Perez</p>
+                <p>${ domo.nombre } ${ domo.apellido }</p>
             </div>
             <div class="content">
                 <div class="row">
@@ -35,10 +36,10 @@
                                             <div class="col-md-4 product-detail">
                                                 <h5>Domo</h5>
                                                 <div class="product-info">
-                                                    <p><b>Nombre: </b><span id="product-description">Juan Perez</span><br>
+                                                    <p><b>Nombre: </b><span id="product-description">${ domo.nombre } ${ domo.apellido }</span><br>
                                                      <!--     <b>Author: </b>Dale Carnegie<br>
                                                         <b>Number of pages: </b>336<br> -->
-                                                        <b>Precio:</b> $ <span id="unit-price">10</span></p>
+                                                        <b>Precio:</b> $ <span id="unit-price">${ precio }</span></p>
                                                 </div>
                                             </div>
                                             <!--  <div class="col-md-3 product-detail">
@@ -73,7 +74,7 @@
                     <h2 class="title">Resumen</h2>
                     <div class="item">
                         <!--  <span class="price" id="summary-price"></span> -->
-                        <!--  <p class="item-name">Book x <span id="summary-quantity"></span></p> -->
+                        <p class="item-name">Servicio Personalizado<span id="summary-quantity"></span></p>
                     </div>
                     <div class="total">Total<span class="price" id="summary-total"></span></div>
                 </div>

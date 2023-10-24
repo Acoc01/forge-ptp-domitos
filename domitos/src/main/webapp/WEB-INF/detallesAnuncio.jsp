@@ -61,8 +61,8 @@
 				</thead>
 				<c:forEach items="${ postulantes }" var="postulante">
 					<tr>
-						<td>${ postulante.nombre } ${ postulante.apellido }</td>	
-						<td><a href="/pago" class="btn btn-primary">Pagar</a></td>
+						<td><a href="/perfil/${ postulante.id }">${ postulante.nombre } ${ postulante.apellido }</a></td>	
+						<td><a href="/pago?id=${postulante.id }&precio=${anuncio.precio}" class="btn btn-primary">Pagar</a></td>
 					</tr>
 				</c:forEach>
 				<tbody>

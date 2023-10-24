@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -53,20 +54,6 @@ public class ControladorUsuarios {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
 			return "redirect:/main";
 		}
-	}
-	@PostMapping("/registro/domo")
-	public String registroDomo(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
-							   BindingResult result,
-							   HttpSession session, @RequestParam("domo") Boolean domo) {
-		servicio.registrar(nuevoUsuario, result, domo);
-
-		if(result.hasErrors()) {
-			return "index.jsp";
-		} else {
-			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/main";
-		}
-		
 	}
 	
 	@GetMapping("/login")
@@ -114,8 +101,20 @@ public class ControladorUsuarios {
 		model.addAttribute("postulaciones", usuario.getListaAnuncios());
 		return "perfil.jsp";
 	}
-	
-	@GetMapping("/main")
+	@GetMapping("/perfil/{id}")
+	public String perfil(@PathVariable("id") Long userId, HttpSession session, Model model) {
+		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
+		if(user == null) {
+			return "redirect:/";
+		}
+		Usuario usuario = servicio.encontrarUsuario(userId);
+		List<Anuncio> misAnuncios = sa.encontrarMisAnuncios(usuario.getId());
+		model.addAttribute("anuncios",misAnuncios);
+		model.addAttribute("usuario",usuario);
+		model.addAttribute("postulaciones", usuario.getListaAnuncios());
+		return "perfil.jsp";
+	}
+	@GetMapping("/dashboard")
 	public String temporal(HttpSession session) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
