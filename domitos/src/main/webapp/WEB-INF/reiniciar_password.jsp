@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,7 @@
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
 	</c:if>
 </nav>
 <main class="h-full position-relative align-items-center">

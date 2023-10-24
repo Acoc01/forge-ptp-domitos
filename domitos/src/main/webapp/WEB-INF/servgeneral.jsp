@@ -19,6 +19,7 @@
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
 	</c:if>
 </nav>
     
@@ -37,14 +38,29 @@
                 <div class="revision">
                     <h2>¡Tramites!</h2>
                     <p><u>Revisión tecnica</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/tramites.png" alt="revisiontecnica"></a>
-
+                    <c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/tramites.png" alt="revisiontecnica">
+						 </a>
+                    </c:if>
+                    <c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/tramites.png" alt="revisiontecnica">
+						 </a>
+                    </c:if>
                 </div>
                 <div class="filas">
                     <p><u>Hacer filas</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/filas.png" alt="hacerfilas"></a>
+                    <c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/filas.png" alt="hacerfilas">
+						</a>
+                    </c:if>
+                    <c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/filas.png" alt="hacerfilas">
+						</a>
+                    </c:if>
 
                 </div>
 
@@ -54,18 +70,38 @@
                 <div class="adultos">
                 <h2>Cuidados</h2>
                 <p><u>Adultos Mayores</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/adulto.png" alt="adultomayor"></a>
-                    </div>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/adulto.png" alt="adultomayor">
+						</a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/adulto.png" alt="adultomayor">
+						</a>
+                	</c:if>
+                </div>
                     <div class="niños">
                 <p><u>Niños</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/niños.png" alt="niños"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/niños.png" alt="niños"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/niños.png" alt="niños"></a>
+                	</c:if>
                     </div>
                     <div class="mascotas">
                 <p><u>Mascotas</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/mascotas.png" alt="mascotas"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/mascotas.png" alt="mascotas"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/mascotas.png" alt="mascotas"></a>
+                	</c:if>
                     </div>
                     
                 
@@ -74,18 +110,36 @@
                 <div class="electrico">
                 <h2>Reparaciones</h2>
                 <p><u>Casa</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/reparocasa.png" alt="electrico"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/reparocasa.png" alt="electrico"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/reparocasa.png" alt="electrico"></a>
+                	</c:if>
             </div>
                 <div class="gasfiter">          
                 <p><u>Muebles</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	</c:if>
                         </div>
                         <div class="mecanico">
                 <p><u>Mecanico</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                            <img src="/images/mecanico.png" alt="mecanico"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+								<img src="/images/mecanico.png" alt="mecanico"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/login">
+								<img src="/images/mecanico.png" alt="mecanico"></a>
+                	</c:if>
                         </div>
                 
             </div>

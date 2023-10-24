@@ -12,15 +12,16 @@
 </head>
 
 <body>
-	<nav>
-    <button class="titulo" onclick="location.href='/'">Domos</button>
-    <c:if test="${ usuarioEnSesion == null }">
-        <button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
-        <button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
-    </c:if>
-    <c:if test="${ usuarioEnSesion != null }">
-        <button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
-    </c:if>
+<nav>
+	<button class="titulo" onclick="location.href='/'">Domos</button>
+	<c:if test="${ usuarioEnSesion == null }">
+		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
+	</c:if>
+	<c:if test="${ usuarioEnSesion != null }">
+		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
+	</c:if>
 </nav>
     <main>
         <section id="top">
@@ -55,7 +56,7 @@
             </div>
             <div id="der">
                 <h3>Transforma tu pasión por el servicio en una carrera de Excelencia</h3>
-                <a href="#">Sé un Domo</a>
+                <a href="/registrarme">Sé un Domo</a>
             </div>
 
         </section>

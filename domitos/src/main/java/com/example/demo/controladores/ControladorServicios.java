@@ -41,7 +41,7 @@ public class ControladorServicios {
 		Usuario usuario = servicios.encontrarUsuario(user.getId());
 	    model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
 	    model.addAttribute("usuario", usuario);
-	    return "anuncio.jsp";
+	    return "crearAnuncio.jsp";
 	}
 	
 	@GetMapping("/servicios/general")
@@ -103,7 +103,7 @@ public class ControladorServicios {
 
 	    ra.guardarAnuncio(anuncio);
 
-	    return "redirect:/mostrarAnuncios";
+	    return "redirect:/perfil";
 	}
 
 

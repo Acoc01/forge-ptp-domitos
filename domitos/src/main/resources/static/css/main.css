@@ -36,12 +36,12 @@ header {
 
 nav {
     width: 100vw;
-    height: 13%;
+    height: 13%; /*TEMP*/
     background-color: black;
     display: flex;
     flex-direction: row;
     color:white;
-    padding-right: 2%;
+    padding-right: 2%;    
 }
 nav .titulo{
     margin-right: 63%;
@@ -61,7 +61,7 @@ nav .botones{
     font-size: 25px;
     background-color: black;
     color: white;
-
+    
 }
 
 #top {

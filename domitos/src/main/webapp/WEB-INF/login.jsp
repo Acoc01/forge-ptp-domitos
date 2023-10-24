@@ -21,6 +21,7 @@
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
 	</c:if>
 </nav>
 <!--   <nav class="navbar navbar-expand-lg bg-body-tertiary">

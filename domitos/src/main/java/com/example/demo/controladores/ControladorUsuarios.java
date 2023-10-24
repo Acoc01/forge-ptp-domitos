@@ -58,10 +58,10 @@ public class ControladorUsuarios {
 		
 		if(usuarioInicioSesion == null) {
 			redirectAttributes.addFlashAttribute("error_login", "La información de Inicio de Sesión no es correcta");
-			return "redirect:/";
+			return "redirect:/login";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuarioInicioSesion);
-			return "redirect:/dashboard";
+			return "redirect:/servicios/general";
 		}
 	}
 	
