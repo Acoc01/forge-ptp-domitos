@@ -29,9 +29,17 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
-		return "index.jsp";
+		return "servdomo.jsp";
 	}
 
+	@GetMapping("/registro")
+	public String register(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
+						   HttpSession session) {
+		return "index.jsp";
+	}
+	
+	
+	
 	@PostMapping("/registro")
 	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
 						   BindingResult result,
@@ -43,7 +51,7 @@ public class ControladorUsuarios {
 			return "index.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			return "redirect:/main";
 		}
 	}
 	@PostMapping("/registro/domo")
@@ -56,9 +64,14 @@ public class ControladorUsuarios {
 			return "index.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			return "redirect:/main";
 		}
 		
+	}
+	
+	@GetMapping("/login")
+	public String iniciarSesion() {
+		return "login.jsp";
 	}
 	
 	@PostMapping("/login") 
@@ -74,7 +87,7 @@ public class ControladorUsuarios {
 			return "redirect:/";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuarioInicioSesion);
-			return "redirect:/dashboard";
+			return "redirect:/main";
 		}
 	}
 	
@@ -102,7 +115,7 @@ public class ControladorUsuarios {
 		return "perfil.jsp";
 	}
 	
-	@GetMapping("/dashboard")
+	@GetMapping("/main")
 	public String temporal(HttpSession session) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
@@ -110,9 +123,5 @@ public class ControladorUsuarios {
 		}
 		return "servdomo.jsp";
 	}
-	
-	@GetMapping("/login")
-	public String iniciarSesion() {
-		return "login.jsp";
-	}
+
 }

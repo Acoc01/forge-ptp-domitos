@@ -15,8 +15,8 @@
     <header>
         <h2>D'mos</h2>
         <nav>
-            <a href="#">Iniciar Sesión</a>
-            <a href="#">Registro</a>
+            <a href="/login">Iniciar Sesión</a>
+            <a href="/registro">Registro</a>
         </nav>
     </header>  
      <!-- menu -->
