@@ -59,11 +59,11 @@
             padding: 15px;
         }
     #footer {
-    border: 2px solid rgba(0, 0, 0, 0.54);
-    background: rgba(150, 0, 0, 0.95);
+	border: 2px solid rgba(0, 0, 0, 0.54);
+    background: rgba(255, 0, 0, 0.40);
     color: rgba(0, 0, 0, 0.50);
     padding-left: 5%;
-	width: 100%
+	width: 100vw;
 	}
 
 
@@ -111,7 +111,7 @@
 <nav>
 	<button class="titulo" onclick="location.href='/'">Domos</button>
 	<c:if test="${ usuarioEnSesion == null }">
-		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
 		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
