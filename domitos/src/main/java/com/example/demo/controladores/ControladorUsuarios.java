@@ -44,7 +44,9 @@ public class ControladorUsuarios {
 			return "index.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			if(nuevoUsuario.getDomo() == false)
+				return "redirect:/servicios/general";
+			return "redirect:/mostrarAnuncios";
 		}
 	}
 	
@@ -61,7 +63,10 @@ public class ControladorUsuarios {
 			return "redirect:/login";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuarioInicioSesion);
-			return "redirect:/servicios/general";
+			if(usuarioInicioSesion.getDomo() == false)
+				return "redirect:/servicios/general";
+			else
+				return "redirect:/mostrarAnuncios";
 		}
 	}
 	
