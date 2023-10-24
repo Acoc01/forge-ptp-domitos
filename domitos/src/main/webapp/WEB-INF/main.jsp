@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domos</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/css/servgeneral.css">
 </head>
 
 <body>
@@ -30,22 +29,22 @@
                 <br>que Necesitas
                 <br>Donde Quieras
                 <br>Cuando Quieras</p>
-                <a href="#">Más información</a>
+                <a href="/servicios/general">Más información</a>
             </div>
         </section>
         <section id="middle">
             <h2>¿Qué necesitas?</h2>
             <div id="container-1">
                 <div>
-                    <a href="#"><img src="/images/tramites.png" alt="imagen de servicios de tramites" />
+                    <a href="/crearAnuncio"><img src="/images/tramites.png" alt="imagen de servicios de tramites" />
                     Servicios de Trámites</a>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/reparaciones.png" alt="imagen del servicio de reparaciones" />
+                    <a href="/crearAnuncio"><img src="/images/reparaciones.png" alt="imagen del servicio de reparaciones" />
                     Servicio de Reparaciones</a>
                 </div>
                 <div>
-                    <a href="#"><img src="/images/main-cuidados.png" alt="imagen de servicios de cuidados" />
+                    <a href="/crearAnuncio"><img src="/images/main-cuidados.png" alt="imagen de servicios de cuidados" />
                     Servicio de Cuidados</a>
                 </div>
             </div>
