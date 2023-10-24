@@ -36,7 +36,7 @@ public class ControladorServicios {
 			return "redirect:/login";
 		}
 		if(user.getDomo() == true) {
-			return "redirect:/";
+			return "redirect:/mostrarAnuncios";
 		}
 		Usuario usuario = servicios.encontrarUsuario(user.getId());
 	    model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
@@ -47,9 +47,8 @@ public class ControladorServicios {
 	@GetMapping("/servicios/general")
 	public String serviciosGeneral(HttpSession session, Model model) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
-
 		if(user != null && user.getDomo() == true) {
-			return "redirect:/servicios/domo";
+			return "redirect:/mostrarAnuncios";
 		}
 		return "servgeneral.jsp";
 	}
@@ -87,7 +86,7 @@ public class ControladorServicios {
 			return "redirect:/login";
 		}
 		if(user.getDomo() == true) {
-			return "redirect:/";
+			return "redirect:/mostrarAnuncios";
 		}
 		Usuario creador = servicios.encontrarUsuario(hostId);
 	    Anuncio anuncio = new Anuncio();
@@ -112,6 +111,9 @@ public class ControladorServicios {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
 			return "redirect:/login";
+		}
+		if(user.getDomo() == false) {
+			return "redirect:/servicios/general";
 		}
 		
 		Usuario usuario = servicios.encontrarUsuario(user.getId());
@@ -141,6 +143,9 @@ public class ControladorServicios {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
 			return "redirect:/login";
+		}
+		if(user.getDomo() == true) {
+			return "redirect:/perfil";
 		}
 		Anuncio miAnuncio = ra.encontrarAnuncioPorId(anuncioId);
 		model.addAttribute("anuncio",miAnuncio);
