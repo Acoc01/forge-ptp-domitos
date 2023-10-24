@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -9,11 +9,22 @@
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<link href="css/login.css" rel="stylesheet">
-<link href="css/foto_perfil.css" rel="stylesheet">
+<link href="/css/login.css" rel="stylesheet">
+<link href="/css/foto_perfil.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/servgeneral.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav>
+	<button class="titulo" onclick="location.href='/'">Domos</button>
+	<c:if test="${ usuarioEnSesion == null }">
+		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
+	</c:if>
+	<c:if test="${ usuarioEnSesion != null }">
+		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+	</c:if>
+</nav>
+<!--  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Domos</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,11 +52,11 @@
       </ul>
     </div>
   </div>
-</nav>
-<main class="h-full position-relative bg-secondary">
+</nav> -->
+<main class="h-full position-relative">
 	<!-- Seccion donde va la informacion principal del usuario -->
 	<section class="container-fluid bg-light">
-		<div class="row border-bottom m-3 text-center">
+		<div class="row border-bottom text-center pt-3">
 			<h3>Perfil</h3>
 		</div>
 		<div class="row">
@@ -59,8 +70,8 @@
 		</div>
 	</section>
 	<!-- Seccion de anuncios hechos por el usuario -->
-	<section class="container-fluid bg-primary-subtle">
-		<div class="row border-bottom mb-3 mt-1 text-center">
+	<section class="container-fluid">
+		<div class="row border-bottom mb-3 mt-3 text-center">
 			<c:if test="${ usuario.domo == false }">
 				<h3>Mis Anuncios</h3>
 			</c:if>
@@ -70,11 +81,11 @@
 		</div>
 		<!-- Aqui deberian mostrarse los anuncios del usuario ordenados desde el mas reciente al mas antiguo -->
 		<!-- La idea es que se muestre un solo anuncio por fila o tres por fila, en este ejemplo hay tres por fila pero es provicional -->
-		<div class="row bg-primary-subtle pb-4">
+		<div class="row card-section pb-4">
 			<c:if test="${ usuario.domo == false }">
 				<c:forEach items="${ anuncios }" var="anuncio">
 					<div class="col-sm-4">
-						<div class="card text-center">
+						<div class="card text-center mt-2">
 						  <div class="card-header">
 							${ anuncio.clasificacion }
 						  </div>
@@ -94,7 +105,7 @@
 			</c:if>
 			<c:if test="${ usuario.domo == true}">
 				<c:forEach items="${ postulaciones }" var="anuncio">
-					<div class="col-sm-4">
+					<div class="col-sm-4 mt-2">
 						<div class="card text-center">
 						  <div class="card-header">
 							${ anuncio.clasificacion }
