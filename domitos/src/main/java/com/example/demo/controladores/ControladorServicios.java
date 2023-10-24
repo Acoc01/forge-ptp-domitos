@@ -47,7 +47,6 @@ public class ControladorServicios {
 	@GetMapping("/servicios/general")
 	public String serviciosGeneral(HttpSession session, Model model) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
-		
 		if(user != null && user.getDomo() == true) {
 			return "redirect:/servicios/domo";
 		}

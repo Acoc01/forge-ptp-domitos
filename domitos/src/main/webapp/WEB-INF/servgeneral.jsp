@@ -14,7 +14,7 @@
 <nav>
 	<button class="titulo" onclick="location.href='/'">Domos</button>
 	<c:if test="${ usuarioEnSesion == null }">
-		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
 		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
@@ -26,17 +26,18 @@
     </div>
 
         <div class="contenedor_servicios">
+           <section id="caja1">
             <div class="box1">
                 <div class="izquierda">
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Tramites</button></li>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Cuidados</button></li>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Reparaciones</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja1"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja1">Tramites</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja2"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja2">Cuidados</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja3"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja3">Reparaciones</button></li>
                     </ul>
                 </div>
                 
                 <div class="revision">
-                    <h2>¡Tramites!</h2>
+                    <h2>Tramites</h2>
                     <p><u>Revisión tecnica</u></p>
                     <c:if test="${ usuarioEnSesion != null }">
 						<a href="/crearAnuncio">
@@ -62,10 +63,10 @@
 						</a>
                     </c:if>
 
-                </div>
-
-                
+                </div>    
             </div>
+            </section>
+            <section id="caja2">
             <div class="box2">
                 <div class="adultos">
                 <h2>Cuidados</h2>
@@ -81,7 +82,7 @@
 						</a>
                 	</c:if>
                 </div>
-                    <div class="niños">
+                    <div class="ninos">
                 <p><u>Niños</u></p>
                 	<c:if test="${ usuarioEnSesion != null }">
 						<a href="/crearAnuncio">
@@ -103,9 +104,9 @@
 							<img src="/images/mascotas.png" alt="mascotas"></a>
                 	</c:if>
                     </div>
-                    
-                
             </div>
+            </section>
+            <section id="caja3">
             <div class="box3">
                 <div class="electrico">
                 <h2>Reparaciones</h2>
@@ -141,8 +142,8 @@
 								<img src="/images/mecanico.png" alt="mecanico"></a>
                 	</c:if>
                         </div>
-                
             </div>
+            </section>
         
         <section id="footer">
             <h3>Domos</h3>
