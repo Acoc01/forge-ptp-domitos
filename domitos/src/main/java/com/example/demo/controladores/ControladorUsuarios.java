@@ -30,7 +30,7 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
-		return "index.jsp";
+		return "main.jsp";
 	}
 
 	@PostMapping("/registro")
@@ -108,6 +108,11 @@ public class ControladorUsuarios {
 			return "redirect:/";
 		}
 		return "servdomo.jsp";
+	}
+	
+	@GetMapping("/registrarme")
+	public String registrarme(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+		return "registro.jsp";
 	}
 	
 	@GetMapping("/login")

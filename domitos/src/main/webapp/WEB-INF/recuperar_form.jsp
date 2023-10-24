@@ -24,7 +24,7 @@
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
 	</c:if>
 </nav>
-<main class="h-full position-relative align-items-center">
+<main class="h-full position-relative bg-white align-items-center">
 	<section class="container rounded-3 shadow w-25 bg-light position-absolute top-50 start-50 translate-middle">
 		<div class="row border-bottom m-3 text-center">
 			<h3>Recuperar Contraseña</h3>

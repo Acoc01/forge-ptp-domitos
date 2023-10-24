@@ -10,6 +10,7 @@
 <script type="text/javascript" src="js/reset-pwd.js" defer></script>
 <link href="/css/login.css" rel="stylesheet">
 <link href="/css/servgeneral.css" rel="stylesheet">
+<link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
 <nav>
@@ -48,6 +49,41 @@
 		</div>
 	</section>
 </main>
+<section id="footer">
+	<h3>Domos</h3>
+	<div id="ftr">
+		<div>
+			<h4>Navegación del Sitio</h4>
+			<ul>
+				<a href="#">
+					<li>Inicio</li>
+				</a>
+				<a href="#">
+					<li>Servicios</li>
+				</a>
+
+			</ul>
+		</div>
+		<div>
+			<h4>Privacidad y Términos</h4>
+			<ul>
+				<a href="#">
+					<li>Términos de uso</li>
+				</a>
+				<a href="#">
+					<li>Política de Privacidad</li>
+				</a>
+			</ul>
+		</div>
+		<div>
+			<h4>Contactos</h4>
+			<ul>
+				<li>DomosLtda@domos.cl</li>
+				<li>+56912345678</li>
+			</ul>
+		</div>
+	</div>
+</section>
 
 </body>
 </html>
