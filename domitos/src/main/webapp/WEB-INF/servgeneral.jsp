@@ -10,170 +10,154 @@
 <link rel="stylesheet" href="/css/servgeneral.css">
 </head>
 <body>
-    
-<nav>
-	<button class="titulo" onclick="location.href='/'">Domos</button>
-	<c:if test="${ usuarioEnSesion == null }">
-		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
-		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
-	</c:if>
-	<c:if test="${ usuarioEnSesion != null }">
-		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
-		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
-	</c:if>
-</nav>
-    
-    </div>
+    <!-- encabezado -->
+     <nav>
+        <button class="titulo" onclick="location.href='/'">Domos</button>
+        <c:if test="${ usuarioEnSesion == null }">
+            <button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
+            <button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
+        </c:if>
+        <c:if test="${ usuarioEnSesion != null }">
+            <button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+            <button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
+        </c:if>
+    </nav>
+     <!-- menu -->
+     <div class="contenedorMayor">
+        <div class="contenido1">
+            <h1>Tramites</h1>
+        <c:forEach items="${tramites}" var="tramites">
+       
+        <h4>${tramites.titulo}</h4>
+        <p>${tramites.descripcion}</p>
+        <p>Fecha Límite: ${tramites.fechaLimite}</p>
+        <p>Precio: ${ tramites.precio }</p>
+        <c:if test="${ usuario.domo == true && tramites.listaDomos.contains(usuario) == false}">
+		   <form action="anuncio/${ tramites.id }/solicitar" method="POST">
+			   <input type="hidden" value="${ usuario.id }" name="id">
+			   <input type="submit" value="Enlistarse">	
+		   </form> 
+        </c:if>
+    </c:forEach>
+    <c:if test="${ usuario.domo == false}">
+   		<a href="crearAnuncio">Crear mi anuncio</a>
+    </c:if>
+	</div>
+	
+	
+   <div class="contenido2">
+	   <h1>Cuidados</h1>
+		<h2>Cuidado Adulto Mayor</h2>
+		<c:forEach items="${cuidadoAdulto}" var="cuidadoAdulto">
+			
+			<h4>${cuidadoAdulto.titulo}</h4>
+			<p>${cuidadoAdulto.descripcion}</p>
+			<p>Fecha Límite: ${cuidadoAdulto.fechaLimite}</p>
+			<p>Precio: ${ cuidadoAdulto.precio }</p>
+			<c:if test="${ usuario.domo == true && cuidados.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ cuidados.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+	   <h2>Mascotas</h2>
+		<c:forEach items="${mascotas}" var="mascotas">
+		   
+			<h4>${mascotas.titulo}</h4>
+			<p>${mascotas.descripcion}</p>
+			<p>Fecha Límite: ${mascotas.fechaLimite}</p>
+			<p>Precio: ${ mascotas.precio }</p>
+			<c:if test="${ usuario.domo == true && mascotas.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ mascotas.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+	   <h2>Cuidados Niños</h2>
+		<c:forEach items="${cuidadoNino}" var="cuidadoNino">
+		   
+			<h4>${cuidadoNino.titulo}</h4>
+			<p>${cuidadoNino.descripcion}</p>
+			<p>Fecha Límite: ${cuidadoNino.fechaLimite}</p>
+			<p>Precio: ${ cuidadoNino.precio }</p>
+			<c:if test="${ usuario.domo == true && cuidadoNino.listaDomos.contains(usuario) == false}">
+			   <form action="anuncio/${ cuidadoNino.id }/solicitar" method="POST">
+				   <input type="hidden" value="${ usuario.id }" name="id">
+				   <input type="submit" value="Enlistarse">	
+			   </form> 
+			</c:if>
+		</c:forEach>
+		<c:if test="${ usuario.domo == false}">
+			   <a href="crearAnuncio">Crear mi anuncio</a>
+		</c:if>
+	</div>
+           
+   
+   <div class="contenido3">
+    <h1>Reparaciones</h1>
+    <c:forEach items="${reparaciones}" var="reparaciones">
+       
+        <h4>${reparaciones.titulo}</h4>
+        <p>${reparaciones.descripcion}</p>
+        <p>Fecha Límite: ${reparaciones.fechaLimite}</p>
+        <p>Precio: ${ reparaciones.precio }</p>
+        <c:if test="${ usuario.domo == true && reparaciones.listaDomos.contains(usuario) == false}">
+		   <form action="anuncio/${ reparaciones.id }/solicitar" method="POST">
+			   <input type="hidden" value="${ usuario.id }" name="id">
+			   <input type="submit" value="Enlistarse">	
+		   </form> 
+        </c:if>
+    </c:forEach>
+    <c:if test="${ usuario.domo == false}">
+   		<a href="crearAnuncio">Crear mi anuncio</a>
+    </c:if>
+	</div>
+</div>
 
-        <div class="contenedor_servicios">
-           <section id="caja1">
-            <div class="box1">
-                <div class="izquierda">
-                    <ul>
-                        <li><a href="http://localhost:8080/servicios/general#caja1"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja1">Tramites</button></li>
-                        <li><a href="http://localhost:8080/servicios/general#caja2"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja2">Cuidados</button></li>
-                        <li><a href="http://localhost:8080/servicios/general#caja3"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja3">Reparaciones</button></li>
-                    </ul>
-                </div>
-                
-                <div class="revision">
-                    <h2>Tramites</h2>
-                    <p><u>Revisión tecnica</u></p>
-                    <c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/tramites.png" alt="revisiontecnica">
-						 </a>
-                    </c:if>
-                    <c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/tramites.png" alt="revisiontecnica">
-						 </a>
-                    </c:if>
-                </div>
-                <div class="filas">
-                    <p><u>Hacer filas</u></p>
-                    <c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/filas.png" alt="hacerfilas">
-						</a>
-                    </c:if>
-                    <c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/filas.png" alt="hacerfilas">
-						</a>
-                    </c:if>
 
-                </div>    
-            </div>
-            </section>
-            <section id="caja2">
-            <div class="box2">
-                <div class="adultos">
-                <h2>Cuidados</h2>
-                <p><u>Adultos Mayores</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/adulto.png" alt="adultomayor">
-						</a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/adulto.png" alt="adultomayor">
-						</a>
-                	</c:if>
-                </div>
-                    <div class="ninos">
-                <p><u>Niños</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/niños.png" alt="niños"></a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/niños.png" alt="niños"></a>
-                	</c:if>
-                    </div>
-                    <div class="mascotas">
-                <p><u>Mascotas</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/mascotas.png" alt="mascotas"></a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/mascotas.png" alt="mascotas"></a>
-                	</c:if>
-                    </div>
-            </div>
-            </section>
-            <section id="caja3">
-            <div class="box3">
-                <div class="electrico">
-                <h2>Reparaciones</h2>
-                <p><u>Casa</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/reparocasa.png" alt="electrico"></a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/reparocasa.png" alt="electrico"></a>
-                	</c:if>
-            </div>
-                <div class="gasfiter">          
-                <p><u>Muebles</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
-                	</c:if>
-                        </div>
-                        <div class="mecanico">
-                <p><u>Mecanico</u></p>
-                	<c:if test="${ usuarioEnSesion != null }">
-						<a href="/crearAnuncio">
-								<img src="/images/mecanico.png" alt="mecanico"></a>
-                	</c:if>
-                	<c:if test="${ usuarioEnSesion == null }">
-						<a href="/login">
-								<img src="/images/mecanico.png" alt="mecanico"></a>
-                	</c:if>
-                        </div>
-            </div>
-            </section>
-        
-        <section id="footer">
-            <h3>Domos</h3>
-            <div id="ftr">
-               <div>
-                <h4>Navegación del Sitio</h4>
-                <ul>
-                    <a href="#"><li>Inicio</li></a>
-                    <a href="#"><li>Servicios</li></a>
-                    
-                </ul>
-               </div>
-               <div>
-                <h4>Privacidad y Términos</h4>
-                <ul>
-                    <a href="#"><li>Términos de uso</li></a>
-                    <a href="#"><li>Política de Privacidad</li></a>
-                </ul>
-               </div>
-               <div>
-                <h4>Contactos</h4>
-                <ul>
-                    <li>DomosLtda@domos.cl</li>
-                    <li>+56912345678</li>
-                </ul>
-               </div>
-            </div>
-        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="footer">
+    <h3>Domos</h3>
+    <div id="ftr">
+       <div>
+        <h4>Navegación del Sitio</h4>
+        <ul>
+            <a href="#"><li>Inicio</li></a>
+            <a href="#"><li>Servicios</li></a>
+            
+        </ul>
+       </div>
+       <div>
+        <h4>Privacidad y Términos</h4>
+        <ul>
+            <a href="#"><li>Términos de uso</li></a>
+            <a href="#"><li>Política de Privacidad</li></a>
+        </ul>
+       </div>
+       <div>
+        <h4>Contactos</h4>
+        <ul>
+            <li>DomosLtda@domos.cl</li>
+            <li>+56912345678</li>
+        </ul>
+       </div>
     </div>
-        
-    
+</section>
+</div>
 </body>
 </html>
