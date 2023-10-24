@@ -11,11 +11,16 @@
 </head>
 <body>
     
-    <nav>
-        <button class="titulo" onclick="location.href='/'">Domos</button>
-        <button class="botones"onclick="location.href='/'">Registrarme</button>
-        <button class="botones"onclick="location.href='../login'">Iniciar Sesión</button>
-    </nav>
+<nav>
+	<button class="titulo" onclick="location.href='/'">Domos</button>
+	<c:if test="${ usuarioEnSesion == null }">
+		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
+	</c:if>
+	<c:if test="${ usuarioEnSesion != null }">
+		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+	</c:if>
+</nav>
     
     </div>
 
