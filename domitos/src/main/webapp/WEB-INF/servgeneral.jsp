@@ -32,7 +32,7 @@
                     <ul>
                         <li><a href="http://localhost:8080/servicios/general#caja1"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja1">Tramites</button></li>
                         <li><a href="http://localhost:8080/servicios/general#caja2"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja2">Cuidados</button></li>
-                        <li><a href="http://localhost:8080/servicios/general#caja3"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja3">Reparaciones</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja3"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja3">Arreglos</button></li>
                     </ul>
                 </div>
                 
