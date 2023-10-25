@@ -24,7 +24,7 @@
 </nav>
     
 
-		<h1 class="text-center" style="font-size: 50px">¿Qué servicio necesitas?</h1>
+		<h1 class="text-center" style="font-size: 50px">ï¿½Quï¿½ servicio necesitas?</h1>
         <div class="contenedor_servicios">
            <section id="caja1">
             <div class="box1">
@@ -38,7 +38,7 @@
                 
                 <div class="revision">
                     <h2>Tramites</h2>
-                    <p><u>Revisión tecnica</u></p>
+                    <p><u>Revisiï¿½n tecnica</u></p>
                     <c:if test="${ usuarioEnSesion != null }">
 						<a href="/crearAnuncio">
 							<img src="/images/tramites.png" alt="revisiontecnica">
@@ -83,14 +83,14 @@
                 	</c:if>
                 </div>
                     <div class="ninos">
-                <p><u>Niños</u></p>
+                <p><u>Niï¿½os</u></p>
                 	<c:if test="${ usuarioEnSesion != null }">
 						<a href="/crearAnuncio">
-							<img src="/images/niños.png" alt="niños"></a>
+							<img src="/images/niï¿½os.png" alt="niï¿½os"></a>
                 	</c:if>
                 	<c:if test="${ usuarioEnSesion == null }">
 						<a href="/login">
-							<img src="/images/niños.png" alt="niños"></a>
+							<img src="/images/niï¿½os.png" alt="niï¿½os"></a>
                 	</c:if>
                     </div>
                     <div class="mascotas">
@@ -149,7 +149,7 @@
             <h3>Domos</h3>
             <div id="ftr">
                <div>
-                <h4>Navegación del Sitio</h4>
+                <h4>Navegaciï¿½n del Sitio</h4>
                 <ul>
                     <a href="#"><li>Inicio</li></a>
                     <a href="#"><li>Servicios</li></a>
@@ -157,10 +157,10 @@
                 </ul>
                </div>
                <div>
-                <h4>Privacidad y Términos</h4>
+                <h4>Privacidad y Tï¿½rminos</h4>
                 <ul>
-                    <a href="#"><li>Términos de uso</li></a>
-                    <a href="#"><li>Política de Privacidad</li></a>
+                    <a href="#"><li>Tï¿½rminos de uso</li></a>
+                    <a href="#"><li>Polï¿½tica de Privacidad</li></a>
                 </ul>
                </div>
                <div>
@@ -173,7 +173,7 @@
             </div>
         </section>
     </div>
-        
-    
+</section>
+</div>
 </body>
 </html>
