@@ -30,7 +30,7 @@ public class ControladorUsuarios {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
-		return "index.jsp";
+		return "main.jsp";
 	}
 
 	@PostMapping("/registro")
@@ -41,10 +41,12 @@ public class ControladorUsuarios {
 		servicio.registrar(nuevoUsuario, result, domo);
 
 		if(result.hasErrors()) {
-			return "index.jsp";
+			return "registro.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			if(nuevoUsuario.getDomo() == false)
+				return "redirect:/servicios/general";
+			return "redirect:/mostrarAnuncios";
 		}
 	}
 	
@@ -58,10 +60,13 @@ public class ControladorUsuarios {
 		
 		if(usuarioInicioSesion == null) {
 			redirectAttributes.addFlashAttribute("error_login", "La información de Inicio de Sesión no es correcta");
-			return "redirect:/";
+			return "redirect:/login";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuarioInicioSesion);
-			return "redirect:/dashboard";
+			if(usuarioInicioSesion.getDomo() == false)
+				return "redirect:/servicios/general";
+			else
+				return "redirect:/mostrarAnuncios";
 		}
 	}
 	
@@ -108,6 +113,11 @@ public class ControladorUsuarios {
 			return "redirect:/";
 		}
 		return "servdomo.jsp";
+	}
+	
+	@GetMapping("/registrarme")
+	public String registrarme(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+		return "registro.jsp";
 	}
 	
 	@GetMapping("/login")

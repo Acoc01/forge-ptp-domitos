@@ -42,7 +42,7 @@
 
     }
         body {
-            background-image: url('pexels-martin-pï¿½chy-2844474.jpg');
+            background-image: url('/images/anuncio-fondo.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -59,11 +59,11 @@
             padding: 15px;
         }
     #footer {
-	border: 2px solid rgba(0, 0, 0, 0.54);
-    background: rgba(255, 0, 0, 0.40);
+    border: 2px solid rgba(0, 0, 0, 0.54);
+    background: rgba(150, 0, 0, 0.95);
     color: rgba(0, 0, 0, 0.50);
     padding-left: 5%;
-	width: 100vw;
+	width: 100%
 	}
 
 
@@ -121,44 +121,43 @@
 </nav>
     <br><br>
     <div class="container rounded-3 bg-light shadow">
-        <h2>Formulario de Registro</h2>
-                <form:form method="POST" action="/registro" modelAttribute="nuevoUsuario">
-                	<div class="form-group">
-                		<form:label path="nombre">Nombre</form:label>
-                		<form:input path="nombre" class="form-control"/>
-                		<form:errors path="nombre"></form:errors>
-                	</div>
-                	<div class="form-group">
-                		<form:label path="apellido">Apellido</form:label>
-                		<form:input path="apellido" class="form-control"/>
-                		<form:errors path="apellido"></form:errors>
-                	</div>
-                	<div class="form-group">
-                		<form:label path="email">E-mail</form:label>
-                		<form:input path="email" class="form-control"/>
-                		<form:errors path="email"></form:errors>
-                	</div>
-                	<div class="form-group">
-                		<form:label path="contrasena">Contraseï¿½a</form:label>
-                		<form:password path="contrasena" class="form-control"/>
-                		<form:errors path="contrasena"></form:errors>
-                	</div>
-                	<div class="form-group">
-                		<form:label path="confirmacion">Confirmacion</form:label>
-                		<form:password path="confirmacion" class="form-control"/>
-                		<form:errors path="confirmacion"></form:errors>
-                	</div>
-                	<div class="form-group d-flex justify-content-around" role="group" aria-label="">
-                		<input class="btn-check" type="checkbox" name="domo" value="True" id="domoCheck" onClick="isDomo()">
-                		<label class="btn btn-outline-primary" for="domoCheck">Quiero ser un domo</label>
-                		<input class="ml-3 btn-check" type="checkbox" name="domo" value="False" id="userCheck" onClick="isUser()">
-                		<label class="btn btn-outline-primary" for="userCheck">Quiero ser un usuario</label>
-                	</div>
-                	<!--<form:hidden path="domo" value="False"/>-->
-					<div class="d-flex justify-content-center">
-						<input type="submit" class="btn bg-light border border-2 btn-1 mt-3 mb-3" value="Registrarme" />
+        <h2>Crea tu Anuncio</h2>
+				<form action="/guardarAnuncio" method="post">
+					<div class="form-group">
+						<label for="direccion">Dirección:</label>
+						<input class="form-control" type="text" id="direccion" name="direccion" required><br>
 					</div>
-                </form:form>
+
+					<div class="form-goup">
+						<label for="titulo">Título:</label>
+						<input class="form-control" type="text" id="titulo" name="titulo" required><br>
+					</div>
+
+					<div class="form-group">
+						<label for="fechaLimite">Fecha Límite:</label>
+						<input class="form-control" type="date" id="fechaLimite" name="fechaLimite" required><br>
+					</div>
+					
+					<div class="form-group">
+						<label for="descripcion">Descripción:</label><br>
+						<textarea class="form-control" id="descripcion" name="descripcion" rows="4" cols="50" required></textarea><br>
+					</div>
+
+					<div class="form-group">
+						<label for="precio">Precio:</label>
+						<input class="form-control" id="precio" name="precio" type="text">
+					</div>
+					<div class="form-group">
+					   <label>Clasificacion</label>
+					   <select name="clasificacion" class="form-select">
+							  <c:forEach items="${clasificaciones}" var="clasificacion">
+								   <option value="${clasificacion}">${clasificacion}</option>
+							  </c:forEach>
+					   </select>
+					</div>
+					<input type="hidden" name="creadorId" value="${ usuario.id }"> 
+					<input class="btn bg-light border border-2 btn-1 mt-3 mb-3 "type="submit" value="Crear Anuncio">
+				</form>
     </div>
     <br><br><br>
     
@@ -166,7 +165,7 @@
         <h3>Domos</h3>
         <div id="ftr">
            <div>
-            <h4>Navegaciï¿½n del Sitio</h4>
+            <h4>Navegación del Sitio</h4>
             <ul>
                 <a href="#"><li>Inicio</li></a>
                 <a href="#"><li>Servicios</li></a>
@@ -174,10 +173,10 @@
             </ul>
            </div>
            <div>
-            <h4>Privacidad y Tï¿½rminos</h4>
+            <h4>Privacidad y Términos</h4>
             <ul>
-                <a href="#"><li>Tï¿½rminos de uso</li></a>
-                <a href="#"><li>Polï¿½tica de Privacidad</li></a>
+                <a href="#"><li>Términos de uso</li></a>
+                <a href="#"><li>Política de Privacidad</li></a>
             </ul>
            </div>
            <div>

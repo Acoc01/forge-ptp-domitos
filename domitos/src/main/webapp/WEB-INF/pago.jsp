@@ -7,12 +7,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/pago.css">
+    <link rel="stylesheet" type="text/css" href="/css/pago.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-    <script type="text/javascript" src="js/pago.js" defer></script>
+    <script type="text/javascript" src="/js/pago.js" defer></script>
 </head>
 <body>
+<nav>
+	<button class="titulo" onclick="location.href='/'">Domos</button>
+	<c:if test="${ usuarioEnSesion == null }">
+		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
+		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
+	</c:if>
+	<c:if test="${ usuarioEnSesion != null }">
+		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
+	</c:if>
+</nav>
 <main>
 
     <!-- Shopping Cart -->
@@ -31,7 +43,7 @@
                                     <div class="product-details">
                                         <div class="row justify-content-md-center">
                                             <div class="col-md-3">
-                                                <img class="img-fluid mx-auto d-block image" src="@{/img/product.png}">
+                                                <img class="img-fluid mx-auto d-block image" src="/images/timbre.png">
                                             </div>
                                             <div class="col-md-4 product-detail">
                                                 <h5>Domo</h5>
@@ -171,12 +183,40 @@
         </div>
     </section>
 </main>
-<footer>
-    <div class="footer_logo"><img id="horizontal_logo" src="@{/img/horizontal_logo.png}"></div>
-    <div class="footer_text">
-        <p>Developers Site:</p>
-        <p><a href="https://www.mercadopago.com/developers">https://www.mercadopago.com/developers</a></p>
-    </div>
-</footer>
+    <section id="footer">
+        <h3>Domos</h3>
+        <div id="ftr">
+            <div>
+                <h4>Navegación del Sitio</h4>
+                <ul>
+                    <a href="#">
+                        <li>Inicio</li>
+                    </a>
+                    <a href="#">
+                        <li>Servicios</li>
+                    </a>
+
+                </ul>
+            </div>
+            <div>
+                <h4>Privacidad y Términos</h4>
+                <ul>
+                    <a href="#">
+                        <li>Términos de uso</li>
+                    </a>
+                    <a href="#">
+                        <li>Política de Privacidad</li>
+                    </a>
+                </ul>
+            </div>
+            <div>
+                <h4>Contactos</h4>
+                <ul>
+                    <li>DomosLtda@domos.cl</li>
+                    <li>+56912345678</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

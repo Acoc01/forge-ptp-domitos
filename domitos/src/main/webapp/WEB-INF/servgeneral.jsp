@@ -14,87 +14,142 @@
 <nav>
 	<button class="titulo" onclick="location.href='/'">Domos</button>
 	<c:if test="${ usuarioEnSesion == null }">
-		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
 		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/perfil'">${ usuarioEnSesion.nombre }</button>
 	</c:if>
 </nav>
     
-    </div>
 
+		<h1 class="text-center" style="font-size: 50px">ï¿½Quï¿½ servicio necesitas?</h1>
         <div class="contenedor_servicios">
+           <section id="caja1">
             <div class="box1">
                 <div class="izquierda">
                     <ul>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Tramites</button></li>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Cuidados</button></li>
-                        <li><a href="https://www.youtube.com/watch?v=BV2FfL32mAk&ab_channel=EladioCarrion-Topic"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="location.href='https://www.youtube.com/watch?v=2LegcNVM_nM&ab_channel=TravisScottVEVO'">Reparaciones</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja1"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja1">Tramites</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja2"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja2">Cuidados</button></li>
+                        <li><a href="http://localhost:8080/servicios/general#caja3"><img src="/images/timbre.png" alt="timbre"></a><button class="timbres" onclick="http://localhost:8080/servicios/general#caja3">Arreglos</button></li>
                     </ul>
                 </div>
                 
                 <div class="revision">
-                    <h2>¡Tramites!</h2>
-                    <p><u>Revisión tecnica</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/tramites.png" alt="revisiontecnica"></a>
-
+                    <h2>Tramites</h2>
+                    <p><u>Revisiï¿½n tecnica</u></p>
+                    <c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/tramites.png" alt="revisiontecnica">
+						 </a>
+                    </c:if>
+                    <c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/tramites.png" alt="revisiontecnica">
+						 </a>
+                    </c:if>
                 </div>
                 <div class="filas">
                     <p><u>Hacer filas</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/filas.png" alt="hacerfilas"></a>
+                    <c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/filas.png" alt="hacerfilas">
+						</a>
+                    </c:if>
+                    <c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/filas.png" alt="hacerfilas">
+						</a>
+                    </c:if>
 
-                </div>
-
-                
+                </div>    
             </div>
+            </section>
+            <section id="caja2">
             <div class="box2">
                 <div class="adultos">
                 <h2>Cuidados</h2>
                 <p><u>Adultos Mayores</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/adulto.png" alt="adultomayor"></a>
-                    </div>
-                    <div class="niños">
-                <p><u>Niños</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/niños.png" alt="niños"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/adulto.png" alt="adultomayor">
+						</a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/adulto.png" alt="adultomayor">
+						</a>
+                	</c:if>
+                </div>
+                    <div class="ninos">
+                <p><u>Niï¿½os</u></p>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/niï¿½os.png" alt="niï¿½os"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/niï¿½os.png" alt="niï¿½os"></a>
+                	</c:if>
                     </div>
                     <div class="mascotas">
                 <p><u>Mascotas</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/mascotas.png" alt="mascotas"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/mascotas.png" alt="mascotas"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/mascotas.png" alt="mascotas"></a>
+                	</c:if>
                     </div>
-                    
-                
             </div>
+            </section>
+            <section id="caja3">
             <div class="box3">
                 <div class="electrico">
-                <h2>Reparaciones</h2>
+                <h2>Arreglos</h2>
                 <p><u>Casa</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/reparocasa.png" alt="electrico"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/reparocasa.png" alt="electrico"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/reparocasa.png" alt="electrico"></a>
+                	</c:if>
             </div>
                 <div class="gasfiter">          
                 <p><u>Muebles</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                        <img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+							<img src="/images/reparomuebles.png" alt="gasfiter"></a>
+                	</c:if>
                         </div>
                         <div class="mecanico">
                 <p><u>Mecanico</u></p>
-                    <a href="https://www.youtube.com/watch?v=HkG1m9sSojI&ab_channel=Tainy">
-                            <img src="/images/mecanico.png" alt="mecanico"></a>
+                	<c:if test="${ usuarioEnSesion != null }">
+						<a href="/crearAnuncio">
+								<img src="/images/mecanico.png" alt="mecanico"></a>
+                	</c:if>
+                	<c:if test="${ usuarioEnSesion == null }">
+						<a href="/login">
+								<img src="/images/mecanico.png" alt="mecanico"></a>
+                	</c:if>
                         </div>
-                
             </div>
+            </section>
         
         <section id="footer">
             <h3>Domos</h3>
             <div id="ftr">
                <div>
-                <h4>Navegación del Sitio</h4>
+                <h4>Navegaciï¿½n del Sitio</h4>
                 <ul>
                     <a href="#"><li>Inicio</li></a>
                     <a href="#"><li>Servicios</li></a>
@@ -102,10 +157,10 @@
                 </ul>
                </div>
                <div>
-                <h4>Privacidad y Términos</h4>
+                <h4>Privacidad y Tï¿½rminos</h4>
                 <ul>
-                    <a href="#"><li>Términos de uso</li></a>
-                    <a href="#"><li>Política de Privacidad</li></a>
+                    <a href="#"><li>Tï¿½rminos de uso</li></a>
+                    <a href="#"><li>Polï¿½tica de Privacidad</li></a>
                 </ul>
                </div>
                <div>
@@ -118,7 +173,7 @@
             </div>
         </section>
     </div>
-        
-    
+</section>
+</div>
 </body>
 </html>
