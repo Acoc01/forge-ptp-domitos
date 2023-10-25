@@ -41,7 +41,7 @@ public class ControladorUsuarios {
 		servicio.registrar(nuevoUsuario, result, domo);
 
 		if(result.hasErrors()) {
-			return "index.jsp";
+			return "registro.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
 			if(nuevoUsuario.getDomo() == false)

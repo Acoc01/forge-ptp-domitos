@@ -168,9 +168,7 @@ public class ControladorServicios {
 		List<Usuario> domos = anuncio.getListaDomos();
 		domos.add(user);
 		anuncio.setListaDomos(domos);
-		user.getListaAnuncios().add(anuncio);
 		ra.guardarAnuncio(anuncio);
-		servicios.guardarUsuario(user);
 		
 		
 		List<Anuncio> tramites = ra.encontrarAnuncios("tramites");
