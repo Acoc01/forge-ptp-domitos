@@ -23,8 +23,8 @@
 	</c:if>
 </nav>
     
-    </div>
 
+		<h1 class="text-center" style="font-size: 50px">¿Qué servicio necesitas?</h1>
         <div class="contenedor_servicios">
            <section id="caja1">
             <div class="box1">
@@ -109,7 +109,7 @@
             <section id="caja3">
             <div class="box3">
                 <div class="electrico">
-                <h2>Reparaciones</h2>
+                <h2>Arreglos</h2>
                 <p><u>Casa</u></p>
                 	<c:if test="${ usuarioEnSesion != null }">
 						<a href="/crearAnuncio">
