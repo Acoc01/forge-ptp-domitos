@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+nav {
+    width: 100vw;
+    height: 13%; /*TEMP*/
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    color:white;
+    padding-right: 2%;    
+}
+nav .titulo{
+    margin-right: 63%;
+    margin-left: 2%;
+    color: #FFF;
+    background-color: black;
+    font-family: Roboto Slab;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+nav .botones{
+    display: flex;
+    align-items: end;
+    margin: 1% 2% 2% 0%;
+    font-size: 25px;
+    background-color: black;
+    color: white;
+    
+}

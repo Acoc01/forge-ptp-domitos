@@ -32,20 +32,23 @@ public class ControladorServicios {
 	@GetMapping("/crearAnuncio")
 	public String mostrarFormulario(@ModelAttribute("anuncio") Anuncio anuncio, Model model, HttpSession session) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
-		if(user == null || user.getDomo() == true) {
-			return "redirect:/";
+		if(user == null) {
+			return "redirect:/login";
+		}
+		if(user.getDomo() == true) {
+			return "redirect:/mostrarAnuncios";
 		}
 		Usuario usuario = servicios.encontrarUsuario(user.getId());
 	    model.addAttribute("clasificaciones", Clasificacion.Clasificacion);
 	    model.addAttribute("usuario", usuario);
-	    return "anuncio.jsp";
+	    return "crearAnuncio.jsp";
 	}
 	
 	@GetMapping("/servicios/general")
 	public String serviciosGeneral(HttpSession session, Model model) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user != null && user.getDomo() == true) {
-			return "redirect:/servicios/domo";
+			return "redirect:/mostrarAnuncios";
 		}
 		return "servgeneral.jsp";
 	}
@@ -79,8 +82,11 @@ public class ControladorServicios {
 	                             @RequestParam ("precio") Integer precio, HttpSession session) {
 
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
-		if(user == null || user.getDomo() == true) {
-			return "redirect:/";
+		if(user == null) {
+			return "redirect:/login";
+		}
+		if(user.getDomo() == true) {
+			return "redirect:/mostrarAnuncios";
 		}
 		Usuario creador = servicios.encontrarUsuario(hostId);
 	    Anuncio anuncio = new Anuncio();
@@ -94,7 +100,7 @@ public class ControladorServicios {
 
 	    ra.guardarAnuncio(anuncio);
 
-	    return "redirect:/mostrarAnuncios";
+	    return "redirect:/perfil";
 	}
 
 
@@ -104,7 +110,10 @@ public class ControladorServicios {
 		
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
-			return "redirect:/";
+			return "redirect:/login";
+		}
+		if(user.getDomo() == false) {
+			return "redirect:/servicios/general";
 		}
 		
 		Usuario usuario = servicios.encontrarUsuario(user.getId());
@@ -133,7 +142,10 @@ public class ControladorServicios {
 	public String detalles(@PathVariable("id") Long anuncioId, HttpSession session, Model model) {
 		Usuario user = (Usuario)session.getAttribute("usuarioEnSesion");
 		if(user == null) {
-			return "redirect:/";
+			return "redirect:/login";
+		}
+		if(user.getDomo() == true) {
+			return "redirect:/perfil";
 		}
 		Anuncio miAnuncio = ra.encontrarAnuncioPorId(anuncioId);
 		model.addAttribute("anuncio",miAnuncio);
@@ -145,7 +157,10 @@ public class ControladorServicios {
 	public String solicitud(@PathVariable("anuncioId") Long anuncioId, @RequestParam("id") Long userId, HttpSession session, Model model) {
 
 		Usuario temp = (Usuario)session.getAttribute("usuarioEnSesion");
-		if(temp == null || temp.getDomo() == false) {
+		if(temp == null) {
+			return "redirect:/login";
+		}
+		if(temp.getDomo() == false) {
 			return "redirect:/";
 		}
 		Anuncio anuncio = ra.encontrarAnuncioPorId(anuncioId);
@@ -153,9 +168,7 @@ public class ControladorServicios {
 		List<Usuario> domos = anuncio.getListaDomos();
 		domos.add(user);
 		anuncio.setListaDomos(domos);
-		user.getListaAnuncios().add(anuncio);
 		ra.guardarAnuncio(anuncio);
-		servicios.guardarUsuario(user);
 		
 		
 		List<Anuncio> tramites = ra.encontrarAnuncios("tramites");

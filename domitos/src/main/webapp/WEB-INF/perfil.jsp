@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -17,11 +17,12 @@
 <nav>
 	<button class="titulo" onclick="location.href='/'">Domos</button>
 	<c:if test="${ usuarioEnSesion == null }">
-		<button class="botones"onclick="location.href='/formulario_registro'">Registrarme</button>
+		<button class="botones"onclick="location.href='/registrarme'">Registrarme</button>
 		<button class="botones"onclick="location.href='/login'">Iniciar Sesion</button>
 	</c:if>
 	<c:if test="${ usuarioEnSesion != null }">
 		<button class="botones"onclick="location.href='/logout'">Cerrar Sesion</button>
+		<button class="botones"onclick="location.href='/servicios/general'">Inicio</button>
 	</c:if>
 </nav>
 <!--  <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -61,7 +62,7 @@
 		</div>
 		<div class="row">
 			<div class="d-flex align-items-center">
-				<img src="https://www.pngall.com/wp-content/uploads/5/Profile-Male-Transparent.png" class="profile-photo float-start rounded-4">
+				<img src="/images/Profile.png" class="profile-photo float-start rounded-4">
 				<div class="info">
 					<p class="border-bottom">Nombre: ${ usuario.nombre }</p>
 					<p class="border-bottom">E-mail: ${ usuario.email }</p>	
